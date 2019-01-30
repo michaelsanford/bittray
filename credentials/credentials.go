@@ -19,12 +19,19 @@ func StoreCred(url string, username string, password string) {
 	}
 }
 
-func GetCred() {
+func GetCred() (auth map[string]string) {
+	auth = make(map[string]string)
+
 	cred, err := wincred.GetGenericCredential(credentialTarget)
+
 	if err == nil {
-		output := fmt.Sprintf("%s:%s@%s", cred.UserName, cred.CredentialBlob, cred.Comment)
-		fmt.Println(output)
+		auth["user"] = cred.UserName
+		auth["pass"] = string(cred.CredentialBlob)
+		auth["url"] = cred.Comment
+		return auth
 	}
+
+	return nil
 }
 
 func DestroyCred() {
