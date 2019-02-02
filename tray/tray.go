@@ -13,7 +13,7 @@ func Run() {
 
 func onReady() {
 	systray.SetIcon(iconCheckmark.Data)
-	systray.SetTitle("Bittray")
+	systray.SetTitle("Bit Tray")
 	systray.SetTooltip("Launched!")
 
 	auth := credentials.GetCred()
