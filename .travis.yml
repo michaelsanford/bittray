@@ -11,4 +11,4 @@ go:
 
 script:
   - go get
-  - go build -ldflags -H=windowsgui bittray.go
+  - go build

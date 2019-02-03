@@ -1,15 +1,18 @@
 package main
 
 import (
+	"github.com/michaelsanford/bittray/console"
 	"github.com/michaelsanford/bittray/credentials"
 	"github.com/michaelsanford/bittray/tray"
 )
 
 func main() {
-	// Test Windows Credential Manager
-	credentials.StoreCred("http://bitbucket.org", "username", "1234")
-	credentials.GetCred()
+	auth := credentials.GetCred()
+	if auth == (credentials.Auth{}) {
+		credentials.AskCred()
+	}
 
-	// Initialize the system tray
+	console.Hide()
+
 	tray.Run()
 }

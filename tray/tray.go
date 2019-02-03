@@ -3,7 +3,6 @@ package tray
 import (
 	"fmt"
 	"github.com/getlantern/systray"
-	"github.com/michaelsanford/bittray/credentials"
 	"github.com/michaelsanford/bittray/tray/assets/checkmark"
 )
 
@@ -13,13 +12,11 @@ func Run() {
 
 func onReady() {
 	systray.SetIcon(iconCheckmark.Data)
-	systray.SetTitle("Bit Tray")
-	systray.SetTooltip("Launched!")
-
-	auth := credentials.GetCred()
+	systray.SetTitle("BitTray")
+	systray.SetTooltip("BitTray!")
 
 	checkOneTwo := systray.AddMenuItem("Check 1..2..", "Test Menu Item")
-	mCredential := systray.AddMenuItem("Start Polling", "Begin looping for new PRs")
+
 	mQuit := systray.AddMenuItem("Quit", "Quit bittray")
 
 	go func() {
@@ -27,8 +24,6 @@ func onReady() {
 			select {
 			case <-checkOneTwo.ClickedCh:
 				fmt.Println("Clicked Check 1..2..")
-			case <-mCredential.ClickedCh:
-				fmt.Println(fmt.Sprintf("%s:%s@%s", auth["user"], auth["pass"], auth["url"]))
 			case <-mQuit.ClickedCh:
 				systray.Quit()
 				return
