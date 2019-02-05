@@ -33,6 +33,5 @@ func onReady() {
 }
 
 func onExit() {
-	// TODO
 	fmt.Println("Exiting!")
 }

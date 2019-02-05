@@ -7,6 +7,7 @@ import (
 	"github.com/michaelsanford/bittray/console"
 	"net/url"
 	"os"
+	"strings"
 )
 
 const credentialTarget string = "github.com/michaelsanford/bittray"
@@ -19,9 +20,9 @@ type Auth struct {
 
 func StoreCred(username string, password string, url string) {
 	cred := wincred.NewGenericCredential(credentialTarget)
-	cred.UserName = username
-	cred.Comment = url
-	cred.CredentialBlob = []byte(password)
+	cred.UserName = strings.TrimSpace(username)
+	cred.Comment = strings.TrimSpace(url)
+	cred.CredentialBlob = []byte(strings.TrimSpace(password))
 	err := cred.Write()
 
 	if err != nil {
@@ -31,17 +32,14 @@ func StoreCred(username string, password string, url string) {
 	return
 }
 
-func GetCred() (auth Auth) {
+func GetCred() (user string, pass string, url string) {
 	cred, err := wincred.GetGenericCredential(credentialTarget)
 
 	if err == nil {
-		auth.user = cred.UserName
-		auth.pass = string(cred.CredentialBlob)
-		auth.url = cred.Comment
-		return auth
+		return cred.UserName, string(cred.CredentialBlob), cred.Comment
 	}
 
-	return Auth{}
+	return "", "", ""
 }
 
 func AskCred() {
@@ -108,5 +106,6 @@ func DestroyCred() {
 		fmt.Println(err)
 		return
 	}
+
 	cred.Delete()
 }
