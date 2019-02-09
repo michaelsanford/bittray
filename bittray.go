@@ -24,6 +24,7 @@ func main() {
 		for {
 			select {
 			case <-c:
+				// TODO Why is this a pointer? 
 				fmt.Println(c)
 			}
 		}
