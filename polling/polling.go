@@ -18,11 +18,11 @@ type PullRequest struct {
 	link  string
 }
 
-func Poll() <-chan map[uint8]PullRequest {
-	json := make(chan map[uint8]PullRequest)
+func Poll() <-chan []PullRequest {
+	items := make(chan []PullRequest)
 
-	user, pass, u := credentials.GetCred()
-	endpoint := u + "rest/api/1.0/dashboard/pull-requests?state=OPEN&role=REVIEWER"
+	user, pass, url := credentials.GetCred()
+	endpoint := url + "rest/api/1.0/dashboard/pull-requests?state=OPEN&role=REVIEWER"
 
 	ticker := time.NewTicker(10 * time.Second)
 
@@ -30,26 +30,28 @@ func Poll() <-chan map[uint8]PullRequest {
 	req, _ := http.NewRequest("GET", endpoint, nil)
 	req.SetBasicAuth(user, pass)
 
-	go func() {
+	go func(items chan []PullRequest) {
 		for ; true; <-ticker.C {
 			resp, _ := client.Do(req)
 			bodyText, _ := ioutil.ReadAll(resp.Body)
 			s := extract(string(bodyText))
-			fmt.Println(s)
-			json <- s
+			items <- s
 		}
-	}()
+	}(items)
 
-	return json
+	return items
 }
 
-func extract(json string) map[uint8]PullRequest {
+func extract(json string) []PullRequest {
 
-	prs := make(map[uint8]PullRequest)
+	var prs []PullRequest
 
 	size := uint8(gjson.Get(json, "size").Uint())
 
 	if size > 0 {
+
+		prs = make([]PullRequest, size-1)
+
 		authors := gjson.Get(json, "values.#.author.user.name").Array()
 		//names := gjson.Get(json, "values.#.author.user.displayName").Array()
 		links := gjson.Get(json, "values.#.links.self.0.href").Array()
@@ -57,9 +59,9 @@ func extract(json string) map[uint8]PullRequest {
 		projects := gjson.Get(json, "values.#.fromRef.repository.project.key").Array()
 
 		for i := uint8(0); i < size; i++ {
-			prs[i] = PullRequest{
+			prs = append(prs, PullRequest{
 				label: fmt.Sprintf("[%s] %s: %s", projects[i].Str, authors[i].Str, titles[i].Str[0:30]),
-				link:  links[i].Str}
+				link:  links[i].Str})
 		}
 	}
 
