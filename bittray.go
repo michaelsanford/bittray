@@ -1,10 +1,8 @@
 package main
 
 import (
-	"fmt"
 	"github.com/michaelsanford/bittray/console"
 	"github.com/michaelsanford/bittray/credentials"
-	"github.com/michaelsanford/bittray/polling"
 	"github.com/michaelsanford/bittray/tray"
 )
 
@@ -17,17 +15,6 @@ func main() {
 	}
 
 	console.Hide()
-
-	c := polling.Poll()
-
-	go func() {
-		for {
-			select {
-			case <-c:
-				fmt.Println(c)
-			}
-		}
-	}()
 
 	tray.Run()
 }
