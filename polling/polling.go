@@ -5,7 +5,6 @@ package polling
  */
 
 import (
-	"fmt"
 	"github.com/michaelsanford/bittray/credentials"
 	"github.com/tidwall/gjson"
 	"io/ioutil"
@@ -14,8 +13,11 @@ import (
 )
 
 type PullRequest struct {
-	label string
-	link  string
+	Author  string
+	Link    string
+	Name    string
+	Project string
+	Title   string
 }
 
 func Poll() <-chan []PullRequest {
@@ -50,18 +52,21 @@ func extract(json string) []PullRequest {
 
 	if size > 0 {
 
-		prs = make([]PullRequest, size-1)
+		prs = make([]PullRequest, 0, size)
 
 		authors := gjson.Get(json, "values.#.author.user.name").Array()
-		//names := gjson.Get(json, "values.#.author.user.displayName").Array()
+		names := gjson.Get(json, "values.#.author.user.displayName").Array()
 		links := gjson.Get(json, "values.#.links.self.0.href").Array()
 		titles := gjson.Get(json, "values.#.title").Array()
 		projects := gjson.Get(json, "values.#.fromRef.repository.project.key").Array()
 
 		for i := uint8(0); i < size; i++ {
 			prs = append(prs, PullRequest{
-				label: fmt.Sprintf("[%s] %s: %s", projects[i].Str, authors[i].Str, titles[i].Str[0:30]),
-				link:  links[i].Str})
+				Author:  authors[i].Str,
+				Title:   titles[i].Str,
+				Name:    names[i].Str,
+				Project: projects[i].Str,
+				Link:    links[i].Str})
 		}
 	}
 

@@ -2,10 +2,13 @@ package tray
 
 import (
 	"fmt"
-	"github.com/getlantern/systray"
+	"github.com/michaelsanford/bittray/credentials"
 	"github.com/michaelsanford/bittray/polling"
 	"github.com/michaelsanford/bittray/tray/assets/checkmark"
 	"github.com/michaelsanford/bittray/tray/assets/star"
+	"github.com/michaelsanford/systray"
+	"github.com/pkg/browser"
+	"strings"
 )
 
 func Run() {
@@ -17,29 +20,59 @@ func onReady() {
 	systray.SetTitle("BitTray")
 	systray.SetTooltip("Loading...")
 
-	checkOneTwo := systray.AddMenuItem("Check 1..2..", "Test Menu Item")
-
-	mQuit := systray.AddMenuItem("Quit", "Quit bittray")
+	mQuit := systray.AddMenuItem("Quit", "Quit Bittray")
+	systray.AddSeparator()
+	mStash := systray.AddMenuItem("Go to BitBucket", "Review your open Pull Requests")
 
 	go func() {
-		for s := range polling.Poll() {
-			if len(s) > 0 {
-				systray.SetTooltip(fmt.Sprintf("%d PRs waiting...", len(s)))
-				systray.SetIcon(iconStar.Data)
-			}
+		var sb strings.Builder
 
-			for i := 0; i < len(s); i++ {
-				//fmt.Println(s.label)
-				//systray.AddMenuItem(s, "Pull Request")
+		for prs := range polling.Poll() {
+			if len(prs) > 0 {
+
+				var authors = make(map[string]struct{}, len(prs))
+				var projects = make(map[string]struct{}, len(prs))
+
+				for i := 0; i < len(prs); i++ {
+					if _, exists := projects[prs[i].Project]; !exists {
+						projects[prs[i].Project] = struct{}{}
+					}
+
+					if _, exists := authors[prs[i].Author]; !exists {
+						projects[prs[i].Author] = struct{}{}
+					}
+				}
+
+				sb.WriteString(fmt.Sprintf("%d PRs waiting in ", len(prs)))
+
+				for project := range projects {
+					sb.WriteString(project + " ")
+				}
+
+				for author := range authors {
+					sb.WriteString(author + " ")
+				}
+
+				systray.SetTooltip(sb.String())
+				systray.SetIcon(iconStar.Data)
+
+				sb.Reset()
+			} else {
+				systray.SetTooltip("Pull Request queue clear!")
+				systray.SetIcon(iconCheckmark.Data)
 			}
 		}
 	}()
 
 	go func() {
+		_, _, url := credentials.GetCred()
 		for {
 			select {
-			case <-checkOneTwo.ClickedCh:
-				fmt.Println("Clicked Check 1..2..")
+			case <-mStash.ClickedCh:
+				err := browser.OpenURL(url)
+				if err != nil {
+					panic(err)
+				}
 			case <-mQuit.ClickedCh:
 				systray.Quit()
 				return
