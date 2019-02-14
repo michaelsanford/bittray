@@ -24,7 +24,7 @@ func Poll() <-chan []PullRequest {
 	items := make(chan []PullRequest)
 
 	user, pass, url := credentials.GetCred()
-	endpoint := url + "rest/api/1.0/dashboard/pull-requests?state=OPEN&role=REVIEWER"
+	endpoint := url + "/rest/api/1.0/dashboard/pull-requests?state=OPEN&role=REVIEWER"
 
 	ticker := time.NewTicker(10 * time.Second)
 

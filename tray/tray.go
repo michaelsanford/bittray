@@ -2,13 +2,13 @@ package tray
 
 import (
 	"fmt"
+	"github.com/gen2brain/dlgs"
 	"github.com/michaelsanford/bittray/credentials"
 	"github.com/michaelsanford/bittray/polling"
 	"github.com/michaelsanford/bittray/tray/assets/checkmark"
 	"github.com/michaelsanford/bittray/tray/assets/star"
 	"github.com/michaelsanford/systray"
 	"github.com/pkg/browser"
-	"strings"
 )
 
 func Run() {
@@ -16,50 +16,28 @@ func Run() {
 }
 
 func onReady() {
-	systray.SetIcon(iconCheckmark.Data)
-	systray.SetTitle("BitTray")
+
+	systray.SetIcon(checkmark.Icon)
+	systray.SetTitle("Bittray")
 	systray.SetTooltip("Loading...")
 
 	mQuit := systray.AddMenuItem("Quit", "Quit Bittray")
+	mReset := systray.AddMenuItem("Reset", "Reset Bittray to factory defaults")
 	systray.AddSeparator()
 	mStash := systray.AddMenuItem("Go to BitBucket", "Review your open Pull Requests")
 
 	go func() {
-		var sb strings.Builder
-
 		for prs := range polling.Poll() {
 			if len(prs) > 0 {
-
-				var authors = make(map[string]struct{}, len(prs))
-				var projects = make(map[string]struct{}, len(prs))
-
-				for i := 0; i < len(prs); i++ {
-					if _, exists := projects[prs[i].Project]; !exists {
-						projects[prs[i].Project] = struct{}{}
-					}
-
-					if _, exists := authors[prs[i].Author]; !exists {
-						projects[prs[i].Author] = struct{}{}
-					}
+				var plural string
+				if len(prs) > 1 {
+					plural = "s"
 				}
-
-				sb.WriteString(fmt.Sprintf("%d PRs waiting in ", len(prs)))
-
-				for project := range projects {
-					sb.WriteString(project + " ")
-				}
-
-				for author := range authors {
-					sb.WriteString(author + " ")
-				}
-
-				systray.SetTooltip(sb.String())
-				systray.SetIcon(iconStar.Data)
-
-				sb.Reset()
+				systray.SetTooltip(fmt.Sprintf("%d PR%s waiting...", len(prs), plural))
+				systray.SetIcon(star.Icon)
 			} else {
 				systray.SetTooltip("Pull Request queue clear!")
-				systray.SetIcon(iconCheckmark.Data)
+				systray.SetIcon(checkmark.Icon)
 			}
 		}
 	}()
@@ -72,6 +50,17 @@ func onReady() {
 				err := browser.OpenURL(url)
 				if err != nil {
 					panic(err)
+				}
+			case <-mReset.ClickedCh:
+				yes, err := dlgs.Question("Reset?", "Reset Bittray to factory defaults?", true)
+				if err != nil {
+					panic(err.Error())
+				}
+				if yes {
+					credentials.DestroyCred()
+					dlgs.Info("Reset", "Bittray has been reset and will now quit.")
+					systray.Quit()
+					return
 				}
 			case <-mQuit.ClickedCh:
 				systray.Quit()

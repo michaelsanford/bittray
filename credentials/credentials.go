@@ -1,16 +1,15 @@
 package credentials
 
 import (
-	"bufio"
 	"fmt"
 	"github.com/danieljoos/wincred"
-	"github.com/michaelsanford/bittray/console"
+	"github.com/gen2brain/dlgs"
+	"github.com/getlantern/systray"
 	"net/url"
-	"os"
 	"strings"
 )
 
-const credentialTarget string = "github.com/michaelsanford/bittray"
+const credentialTarget string = "bt050"
 
 type Auth struct {
 	user string
@@ -19,6 +18,7 @@ type Auth struct {
 }
 
 func StoreCred(username string, password string, url string) {
+	// TODO Replace this with AES (+ Registry?)
 	cred := wincred.NewGenericCredential(credentialTarget)
 	cred.UserName = strings.TrimSpace(username)
 	cred.Comment = strings.TrimSpace(url)
@@ -42,62 +42,71 @@ func GetCred() (user string, pass string, url string) {
 	return "", "", ""
 }
 
-func AskCred() {
-	console.Show()
+func AskCred() (ok bool) {
 
-	fmt.Println("Looks like you're a new user; welcome!")
-	fmt.Println("Let's get you set up...")
-	fmt.Println("")
-	fmt.Println("You will be asked to provide your BitBucket Enterprise (Stash) credentials.")
-	fmt.Println("This information is stored directly in the Windows Credential Manager.")
-	fmt.Println("For more information, see")
-	fmt.Println("- https://support.microsoft.com/en-ca/help/4026814/windows-accessing-credential-manager ")
-	fmt.Println("- https://github.com/michaelsanford/bittray ")
-	fmt.Println("")
+	dlgs.Warning("Bittray", "You're new here! Let's get you set up. You'll need to provide your Bitbucket username, password and URL.")
 
-	reader := bufio.NewReader(os.Stdin)
+	username, ok, _ := askUser()
+	if !ok {
+		systray.Quit()
+		return ok
+	}
 
-	pUser, _ := askUser(reader)
+	password, ok, _ := askPass()
+	if !ok {
+		systray.Quit()
+		return ok
+	}
 
-	pPass, _ := askPass(reader)
+	address, ok, _ := askUrl()
+	if !ok {
+		systray.Quit()
+		return ok
+	}
 
-	pUrl := askUrl(reader)
+	StoreCred(username, password, address)
+	return ok
+}
+
+func askUser() (user string, ok bool, err error) {
+	for user == "" {
+		user, ok, err = dlgs.Entry("Username", "Please enter your BitBucket username", "")
+		if user == "" && ok {
+			dlgs.Error("Username missing", "Ok, so, without your username I can't log you in.\n\nTry again...")
+		} else {
+			return user, ok, err
+		}
+	}
+	return user, ok, err
+}
+
+func askPass() (pass string, ok bool, err error) {
+	for pass == "" {
+		pass, ok, err = dlgs.Password("Password", "Please enter your Bitbucket password")
+		if pass == "" && ok {
+			dlgs.Error("Password missing", "You left the password field blank.\n\nThat's just...not going to work.")
+		} else {
+			return pass, ok, err
+		}
+	}
+	return pass, ok, err
+}
+
+func askUrl() (pUrl string, ok bool, err error) {
+
 	for pUrl == "" {
-		pUrl = askUrl(reader)
+		pUrl, ok, err = dlgs.Entry("Bitbucket URL", "Enter your Bitbucket URL in exactly the format shown", "http://host.domain.com:7990")
+
+		_, parsingErr := url.ParseRequestURI(pUrl)
+		if parsingErr != nil && ok {
+			dlgs.Error("Bad URL Format", "Sorry, the url you provide must be exactly of the format provided below, with a port and no trailing slash.\n\nPlease retry.")
+			pUrl = ""
+		} else {
+			return pUrl, ok, err
+		}
 	}
 
-	fmt.Println("If everything looks correct, hit [ENTER] to continue.")
-	fmt.Println("(If you see an error, press CTRL-C and launch the app again.)")
-	reader.ReadString('\n')
-
-	StoreCred(pUser, pPass, pUrl)
-
-	// TODO Test API Connection
-
-	return
-}
-
-func askUser(reader *bufio.Reader) (user string, err error) {
-	fmt.Print("Username: ")
-	return reader.ReadString('\n')
-}
-
-func askPass(reader *bufio.Reader) (pass string, err error) {
-	fmt.Print("Password: ")
-	return reader.ReadString('\n')
-}
-
-func askUrl(reader *bufio.Reader) (vUrl string) {
-	fmt.Print("URL [as http://host.server.net:7990/]: ")
-	pUrl, _ := reader.ReadString('\n')
-
-	u, err := url.ParseRequestURI(pUrl)
-	if err != nil {
-		fmt.Println(" Sorry, the URL must be EXACTLY of the format [http://host.domain.com:port/]. \n Please try again.")
-		return ""
-	}
-
-	return fmt.Sprintf("%s://%s%s", u.Scheme, u.Host, u.Path)
+	return pUrl, ok, err
 }
 
 func DestroyCred() {
