@@ -1,0 +1,21 @@
+version: 0.5.0-{build}
+
+clone_folder: c:\gopath\src\github.com\michaelsanford\bittray
+
+environment:
+  GOPATH: c:\gopath
+
+install:
+  - echo %PATH%
+  - echo %GOPATH%
+  - set PATH=%GOPATH%\bin;c:\go\bin;%PATH%
+  - go version
+  - go env
+
+stack: go 1.11
+
+test_script:
+  - go vet ./...
+
+build_script:
+  - go build -ldflags -H=windowsgui bittray.go
