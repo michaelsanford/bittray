@@ -5,8 +5,8 @@ import (
 	"github.com/gen2brain/dlgs"
 	"github.com/michaelsanford/bittray/credentials"
 	"github.com/michaelsanford/bittray/polling"
+	"github.com/michaelsanford/bittray/tray/assets"
 	"github.com/michaelsanford/bittray/tray/assets/checkmark"
-	"github.com/michaelsanford/bittray/tray/assets/star"
 	"github.com/michaelsanford/systray"
 	"github.com/pkg/browser"
 )
@@ -34,7 +34,7 @@ func onReady() {
 					plural = "s"
 				}
 				systray.SetTooltip(fmt.Sprintf("%d PR%s waiting...", len(prs), plural))
-				systray.SetIcon(star.Icon)
+				systray.SetIcon(icon.Alarm)
 			} else {
 				systray.SetTooltip("Pull Request queue clear!")
 				systray.SetIcon(checkmark.Icon)
