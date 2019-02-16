@@ -27,13 +27,13 @@ func onReady() {
 	mStash := systray.AddMenuItem("Go to BitBucket", "Review your open Pull Requests")
 
 	go func() {
-		for prs := range polling.Poll() {
-			if len(prs) > 0 {
+		for count := range polling.Poll() {
+			if count > 0 {
 				var plural string
-				if len(prs) > 1 {
+				if count > 1 {
 					plural = "s"
 				}
-				systray.SetTooltip(fmt.Sprintf("%d PR%s waiting...", len(prs), plural))
+				systray.SetTooltip(fmt.Sprintf("%d PR%s waiting...", count, plural))
 				systray.SetIcon(icon.Alarm)
 			} else {
 				systray.SetTooltip("Pull Request queue clear!")

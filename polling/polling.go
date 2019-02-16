@@ -13,20 +13,11 @@ import (
 	"time"
 )
 
-// PullRequest describes critical information about an individual pull request
-type PullRequest struct {
-	Author  string
-	Link    string
-	Name    string
-	Project string
-	Title   string
-}
-
 const pollIntervalSec = 10
 
 // Poll retrieves pull request data from Bitbucket at a given interval
-func Poll() <-chan []PullRequest {
-	items := make(chan []PullRequest)
+func Poll() <-chan uint8 {
+	items := make(chan uint8)
 
 	user, url := credentials.GetConfig()
 	endpoint := url + "/rest/api/1.0/dashboard/pull-requests?state=OPEN&role=REVIEWER&participantStatus=UNAPPROVED"
@@ -42,43 +33,13 @@ func Poll() <-chan []PullRequest {
 	req, _ := http.NewRequest("GET", endpoint, nil)
 	req.SetBasicAuth(user, pass)
 
-	go func(items chan []PullRequest) {
+	go func(items chan uint8) {
 		for ; true; <-ticker.C {
 			resp, _ := client.Do(req)
 			bodyText, _ := ioutil.ReadAll(resp.Body)
-			s := extract(string(bodyText))
-			items <- s
+			items <- uint8(gjson.Get(string(bodyText), "size").Uint())
 		}
 	}(items)
 
 	return items
-}
-
-func extract(json string) []PullRequest {
-
-	var prs []PullRequest
-
-	size := uint8(gjson.Get(json, "size").Uint())
-
-	if size > 0 {
-
-		prs = make([]PullRequest, 0, size)
-
-		authors := gjson.Get(json, "values.#.author.user.name").Array()
-		names := gjson.Get(json, "values.#.author.user.displayName").Array()
-		links := gjson.Get(json, "values.#.links.self.0.href").Array()
-		titles := gjson.Get(json, "values.#.title").Array()
-		projects := gjson.Get(json, "values.#.fromRef.repository.project.key").Array()
-
-		for i := uint8(0); i < size; i++ {
-			prs = append(prs, PullRequest{
-				Author:  authors[i].Str,
-				Title:   titles[i].Str,
-				Name:    names[i].Str,
-				Project: projects[i].Str,
-				Link:    links[i].Str})
-		}
-	}
-
-	return prs
 }
