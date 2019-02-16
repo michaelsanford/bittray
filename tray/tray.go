@@ -17,7 +17,7 @@ func Run() {
 
 func onReady() {
 
-	systray.SetIcon(checkmark.Icon)
+	systray.SetIcon(icon.Lock)
 	systray.SetTitle("Bittray")
 	systray.SetTooltip("Loading...")
 
