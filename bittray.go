@@ -8,9 +8,9 @@ import (
 func main() {
 	var ok bool
 
-	user, pass, url := credentials.GetCred()
+	user, url := credentials.GetCred()
 
-	if user == "" || pass == "" || url == "" {
+	if user == "" || url == "" {
 		credentials.DestroyCred()
 		ok = credentials.AskCred()
 		if !ok {

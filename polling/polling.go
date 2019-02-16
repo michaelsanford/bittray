@@ -6,6 +6,7 @@ package polling
 
 import (
 	"github.com/michaelsanford/bittray/credentials"
+	"github.com/michaelsanford/systray"
 	"github.com/tidwall/gjson"
 	"io/ioutil"
 	"net/http"
@@ -23,8 +24,13 @@ type PullRequest struct {
 func Poll() <-chan []PullRequest {
 	items := make(chan []PullRequest)
 
-	user, pass, url := credentials.GetCred()
+	user, url := credentials.GetCred()
 	endpoint := url + "/rest/api/1.0/dashboard/pull-requests?state=OPEN&role=REVIEWER&participantStatus=UNAPPROVED"
+
+	pass, ok, _ := credentials.AskPass()
+	if !ok {
+		systray.Quit()
+	}
 
 	ticker := time.NewTicker(10 * time.Second)
 

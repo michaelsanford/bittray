@@ -43,7 +43,7 @@ func onReady() {
 	}()
 
 	go func() {
-		_, _, url := credentials.GetCred()
+		_, url := credentials.GetCred()
 		for {
 			select {
 			case <-mStash.ClickedCh:

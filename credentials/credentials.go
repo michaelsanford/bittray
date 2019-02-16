@@ -9,38 +9,7 @@ import (
 	"strings"
 )
 
-const credentialTarget string = "bt050"
-
-type Auth struct {
-	user string
-	pass string
-	url  string
-}
-
-func StoreCred(username string, password string, url string) {
-	// TODO Replace this with AES (+ Registry?)
-	cred := wincred.NewGenericCredential(credentialTarget)
-	cred.UserName = strings.TrimSpace(username)
-	cred.Comment = strings.TrimSpace(url)
-	cred.CredentialBlob = []byte(strings.TrimSpace(password))
-	err := cred.Write()
-
-	if err != nil {
-		panic(err)
-	}
-
-	return
-}
-
-func GetCred() (user string, pass string, url string) {
-	cred, err := wincred.GetGenericCredential(credentialTarget)
-
-	if err == nil {
-		return cred.UserName, string(cred.CredentialBlob), cred.Comment
-	}
-
-	return "", "", ""
-}
+const credentialTarget string = "bittray:conf"
 
 func AskCred() (ok bool) {
 
@@ -52,20 +21,37 @@ func AskCred() (ok bool) {
 		return ok
 	}
 
-	password, ok, _ := askPass()
-	if !ok {
-		systray.Quit()
-		return ok
-	}
-
 	address, ok, _ := askUrl()
 	if !ok {
 		systray.Quit()
 		return ok
 	}
 
-	StoreCred(username, password, address)
+	StoreCred(username, address)
 	return ok
+}
+
+func GetCred() (user string, url string) {
+	cred, err := wincred.GetGenericCredential(credentialTarget)
+
+	if err == nil {
+		return cred.UserName, string(cred.CredentialBlob)
+	}
+
+	return "", ""
+}
+
+func StoreCred(username string, url string) {
+	cred := wincred.NewGenericCredential(credentialTarget)
+	cred.UserName = strings.TrimSpace(username)
+	cred.CredentialBlob = []byte(strings.TrimSpace(url))
+	err := cred.Write()
+
+	if err != nil {
+		panic(err)
+	}
+
+	return
 }
 
 func askUser() (user string, ok bool, err error) {
@@ -78,18 +64,6 @@ func askUser() (user string, ok bool, err error) {
 		}
 	}
 	return user, ok, err
-}
-
-func askPass() (pass string, ok bool, err error) {
-	for pass == "" {
-		pass, ok, err = dlgs.Password("Password", "Please enter your Bitbucket password")
-		if pass == "" && ok {
-			dlgs.Error("Password missing", "You left the password field blank.\n\nThat's just...not going to work.")
-		} else {
-			return pass, ok, err
-		}
-	}
-	return pass, ok, err
 }
 
 func askUrl() (pUrl string, ok bool, err error) {
@@ -107,6 +81,16 @@ func askUrl() (pUrl string, ok bool, err error) {
 	}
 
 	return pUrl, ok, err
+}
+
+func AskPass() (pass string, ok bool, err error) {
+	for pass == "" {
+		pass, ok, err = dlgs.Password("Bitbucket Password", "Enter your Bitbucket password.")
+		if pass == "" || !ok {
+			return "", ok, err
+		}
+	}
+	return pass, ok, err
 }
 
 func DestroyCred() {
