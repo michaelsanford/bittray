@@ -13,6 +13,7 @@ import (
 	"time"
 )
 
+// PullRequest describes critical information about an individual pull request
 type PullRequest struct {
 	Author  string
 	Link    string
@@ -21,10 +22,13 @@ type PullRequest struct {
 	Title   string
 }
 
+const pollIntervalSec = 10
+
+// Poll retrieves pull request data from Bitbucket at a given interval
 func Poll() <-chan []PullRequest {
 	items := make(chan []PullRequest)
 
-	user, url := credentials.GetCred()
+	user, url := credentials.GetConfig()
 	endpoint := url + "/rest/api/1.0/dashboard/pull-requests?state=OPEN&role=REVIEWER&participantStatus=UNAPPROVED"
 
 	pass, ok, _ := credentials.AskPass()
@@ -32,7 +36,7 @@ func Poll() <-chan []PullRequest {
 		systray.Quit()
 	}
 
-	ticker := time.NewTicker(10 * time.Second)
+	ticker := time.NewTicker(pollIntervalSec * time.Second)
 
 	client := &http.Client{}
 	req, _ := http.NewRequest("GET", endpoint, nil)

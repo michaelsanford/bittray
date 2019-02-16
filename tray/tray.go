@@ -6,11 +6,11 @@ import (
 	"github.com/michaelsanford/bittray/credentials"
 	"github.com/michaelsanford/bittray/polling"
 	"github.com/michaelsanford/bittray/tray/assets"
-	"github.com/michaelsanford/bittray/tray/assets/checkmark"
 	"github.com/michaelsanford/systray"
 	"github.com/pkg/browser"
 )
 
+// Run starts the system tray and polling flow
 func Run() {
 	systray.Run(onReady, onExit)
 }
@@ -37,13 +37,13 @@ func onReady() {
 				systray.SetIcon(icon.Alarm)
 			} else {
 				systray.SetTooltip("Pull Request queue clear!")
-				systray.SetIcon(checkmark.Icon)
+				systray.SetIcon(icon.Checkmark)
 			}
 		}
 	}()
 
 	go func() {
-		_, url := credentials.GetCred()
+		_, url := credentials.GetConfig()
 		for {
 			select {
 			case <-mStash.ClickedCh:
@@ -57,7 +57,7 @@ func onReady() {
 					panic(err.Error())
 				}
 				if yes {
-					credentials.DestroyCred()
+					credentials.DestroyConfig()
 					dlgs.Info("Reset", "Bittray has been reset and will now quit.")
 					systray.Quit()
 					return

@@ -8,11 +8,11 @@ import (
 func main() {
 	var ok bool
 
-	user, url := credentials.GetCred()
+	user, url := credentials.GetConfig()
 
 	if user == "" || url == "" {
-		credentials.DestroyCred()
-		ok = credentials.AskCred()
+		credentials.DestroyConfig()
+		ok = credentials.AskConfig()
 		if !ok {
 			return
 		}
