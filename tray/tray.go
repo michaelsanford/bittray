@@ -19,7 +19,7 @@ func onReady() {
 
 	systray.SetIcon(icon.Lock)
 	systray.SetTitle("Bittray")
-	systray.SetTooltip("Loading...")
+	systray.SetTooltip("Locked")
 
 	mQuit := systray.AddMenuItem("Quit", "Quit Bittray")
 	mReset := systray.AddMenuItem("Reset", "Reset Bittray to factory defaults")
@@ -27,17 +27,28 @@ func onReady() {
 	mStash := systray.AddMenuItem("Go to BitBucket", "Review your open Pull Requests")
 
 	go func() {
+		warned := false
+
 		for count := range polling.Poll() {
 			if count > 0 {
+				warned = false
 				var plural string
 				if count > 1 {
 					plural = "s"
 				}
-				systray.SetTooltip(fmt.Sprintf("%d PR%s waiting...", count, plural))
 				systray.SetIcon(icon.Alarm)
-			} else {
-				systray.SetTooltip("Pull Request queue clear!")
+				systray.SetTooltip(fmt.Sprintf("%d PR%s waiting...", count, plural))
+			} else if count == 0 {
+				warned = false
 				systray.SetIcon(icon.Checkmark)
+				systray.SetTooltip("Pull Request queue clear!")
+			} else if count == -1 {
+				if !warned {
+					warned = true
+					systray.SetIcon(icon.Lock)
+					systray.SetTooltip("Locked")
+					dlgs.Error("Bitbucket Error", "There was a problem contacting the API")
+				}
 			}
 		}
 	}()

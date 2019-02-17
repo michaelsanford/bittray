@@ -16,8 +16,8 @@ import (
 const pollIntervalSec = 10
 
 // Poll retrieves pull request data from Bitbucket at a given interval
-func Poll() <-chan uint8 {
-	items := make(chan uint8)
+func Poll() <-chan int8 {
+	items := make(chan int8)
 
 	user, url := credentials.GetConfig()
 	endpoint := url + "/rest/api/1.0/dashboard/pull-requests?state=OPEN&role=REVIEWER&participantStatus=UNAPPROVED"
@@ -33,11 +33,16 @@ func Poll() <-chan uint8 {
 	req, _ := http.NewRequest("GET", endpoint, nil)
 	req.SetBasicAuth(user, pass)
 
-	go func(items chan uint8) {
+	go func(items chan int8) {
 		for ; true; <-ticker.C {
 			resp, _ := client.Do(req)
-			bodyText, _ := ioutil.ReadAll(resp.Body)
-			items <- uint8(gjson.Get(string(bodyText), "size").Uint())
+
+			if resp != nil && resp.StatusCode == 200 {
+				bodyText, _ := ioutil.ReadAll(resp.Body)
+				items <- int8(gjson.Get(string(bodyText), "size").Uint())
+			} else {
+				items <- int8(-1)
+			}
 		}
 	}(items)
 
