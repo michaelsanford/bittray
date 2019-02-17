@@ -25,4 +25,4 @@ The  URL must take _exactly_ the format `http://example.com:7990`, with a port (
 
 ## Next step
 
-:arrow_forward: [Running It and understanding the UI](/bittray).
+:arrow_forward: [Running It and understanding the UI]({{ site.baseurl }}/using).

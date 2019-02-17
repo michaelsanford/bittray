@@ -5,8 +5,6 @@
 layout: home
 ---
 
-# What is it?
-
 `Bittray` is a tiny system tray application written in `Go` that polls a Bitbucket Enterprise (Stash) API 1.0-compatible
 server for new pull requests that you need to act on.
 
@@ -16,7 +14,7 @@ That's it.
 
 See the links at the top of the page.
 
-:arrow_forward: Next step: [Installation and Configuration](/installing).
+:arrow_forward: Next step: [Installation and Configuration]({{ site.baseurl }}/installing).
 
 # Open Source
 

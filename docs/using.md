@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Running It
-permalink: /bittray/
+title: Using It
+permalink: /using/
 order: 2
 ---
 
@@ -45,4 +45,4 @@ Opens the Bitbucket pull request Dashboard you provided.
 
 # Next Step
 
-:arrow_forward: A note on [Security](/security).
+:arrow_forward: A note on [Security]({{ site.baseurl }}/security).
