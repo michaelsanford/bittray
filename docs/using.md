@@ -7,14 +7,14 @@ order: 2
 
 # What Counts as "Pending"
 
-A Pull Request will appear in the pending queue and provoke the alarm icon if
+A Pull Request will appear in the Pending queue and provoke the alarm icon if
 
-1. You are involved as a Reviewer
+1. You are involved as a Reviewer, and
 1. You have not clicked `Approved` or `Needs Work`
 
-Clicking `Needs Work` signifies to the developer that the PR requires attention, and it will remove it from your queue.
+Clicking `Needs Work` says to the developer that the PR requires attention and will remove it from your queue because you've "done something about it".
 
-The next time the developer pushes, the `Needs Work` flag is automatically cleared and the request will fall back into Pending.
+When the developer pushes a new changeset, the `Needs Work` flag is automatically cleared and the request will fall back into Pending.
 
 # Icon States
 

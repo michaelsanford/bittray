@@ -15,13 +15,13 @@ You will be asked to provide the password you use to log in to Bitbucket _every 
 
 The WCM [is not a secure password store](https://github.com/michaelsanford/bittray/issues/14) by default.
 
-In order to securely store the password in the WCM in a retrievable form, I would have needed to encrypt it using
+In order to securely store the password in the WCM (or registry, or anywhere) in a retrievable form, it would need to be encrypted using
 a passphrase provided by the user.
 
 The user would need to enter that decryption passphrase every time `Bittray` launched to decrypt the stored Bitbucket
 credentials.
 
-It saves no clicks to store it.
+It saves no effort to store it.
 
 Storing it is arguably actively harmful.
 
