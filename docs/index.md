@@ -1,8 +1,6 @@
 ---
-# Feel free to add content and custom Front Matter to this file.
-# To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
-
 layout: home
+title: Bittray
 ---
 
 `Bittray` is a tiny system tray application written in `Go` that polls a Bitbucket Enterprise (Stash) API 1.0-compatible
@@ -14,7 +12,7 @@ That's it.
 
 See the links at the top of the page.
 
-:arrow_forward: Next step: [Installation and Configuration]({{ site.baseurl }}/installing).
+:ok: Next step: [Installation and Configuration]({{ site.baseurl }}/installing).
 
 # Open Source
 
@@ -25,10 +23,14 @@ See the links at the top of the page.
 
 [MIT](https://github.com/michaelsanford/bittray/blob/master/LICENSE)
 
-## Repo
+## Repo :octocat:
 
-Available [on Github](https://github.com/michaelsanford/bittray).
+Available at [github.com/michaelsanford/bittray/](https://github.com/michaelsanford/bittray)
 
 Please do submit bugs and new feature requests.
 
 I'm open to receiving pull requests, but please discuss it in the issue tracker first.
+
+## Disclaimer
+
+This project is in no way affiliated with or officially endorsed by Atlassian Inc.

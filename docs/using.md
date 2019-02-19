@@ -20,7 +20,7 @@ When the developer pushes a new changeset, the `Needs Work` flag is automaticall
 
 |Icon|Meaning|Tooltip Text|
 |---|---|---|
-|![Locked](/assets/lock.png)|The API is locked, you need to provide your Bitbucket password.|_Loading..._|
+|![Locked](/assets/lock.png)|The API is locked, you need to provide your Bitbucket password _or_ Bittray cannot connect (VPN down).|_Locked..._|
 |![PRs waiting](/assets/alarm.png)|You have Pull Requests that need attention|_X PR(s) waiting..._|
 |![Queue clear](/assets/checkmark.png)|All of your Pull Requests have been actioned|_PR Queue clear!_|
 
@@ -45,4 +45,4 @@ Opens the Bitbucket pull request Dashboard you provided.
 
 # Next Step
 
-:arrow_forward: A note on [Security]({{ site.baseurl }}/security).
+:ok: A note on [Security]({{ site.baseurl }}/security).

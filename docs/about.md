@@ -29,6 +29,10 @@ I've been meaning to delve into [Go][1] for a while now, captivated by a few of 
 chiefly ["Concurrency is not Parallelism"](https://www.youtube.com/watch?v=cN_DpYBzKso). As a polyglot developer,
 I'm always eager to learn other patterns, paradigms, and add to my toolbox.
 
+Though I'm very comfortable with [TravisCI](https://travis-ci.org/michaelsanford/bittray), I also took this opportunity to integrate [AppVeyor](https://ci.appveyor.com/project/michaelsanford/bittray).
+
+I also had a [suggestion from a learned industry colleague](https://twitter.com/gauntface/status/1096511522757476352) to check out [Azure Pipelines](https://azure.microsoft.com/en-us/services/devops/pipelines/), which is [on my to-do list](https://github.com/michaelsanford/bittray/issues/17).
+
 ## Let's be realistic
 
 This is hardly revolutionary. It's a tiny tool I wanted for myself that I am sharing with my colleagues. Being an open-source
