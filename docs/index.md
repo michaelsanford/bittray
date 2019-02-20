@@ -10,26 +10,25 @@ That's it.
 
 # Setup
 
-See the links at the top of the page.
-
-:ok: Next step: [Installation and Configuration]({{ site.baseurl }}/installing).
+See the links at the top of the page, start at [Installation and Configuration]({{ site.baseurl }}/installing).
 
 # Open Source
 
-[![AppVeyor Status](https://ci.appveyor.com/api/projects/status/github/michaelsanford/bittray)](https://ci.appveyor.com/project/michaelsanford/bittray)
-[![Go Report Card](https://goreportcard.com/badge/github.com/michaelsanford/bittray?branch=master)](https://goreportcard.com/report/github.com/michaelsanford/bittray)
+|AppVeyor|Travis CI|Go Report Card|
+|---|---|---|
+|[![AppVeyor Status](https://ci.appveyor.com/api/projects/status/github/michaelsanford/bittray)](https://ci.appveyor.com/project/michaelsanford/bittray)|[![Build Status](https://travis-ci.org/michaelsanford/bittray.svg?branch=master)](https://travis-ci.org/michaelsanford/bittray)|[![Go Report Card](https://goreportcard.com/badge/github.com/michaelsanford/bittray?branch=master)](https://goreportcard.com/report/github.com/michaelsanford/bittray)|
+
+## Repo :octocat:
+
+Available at [`github.com/michaelsanford/bittray/`](https://github.com/michaelsanford/bittray)
+
+Please do [submit bugs and new feature requests](https://github.com/michaelsanford/bittray/issues/new/choose).
+
+Feel like submitting a PR? Please file an issue first, but I'm definitely happy to receive them!
 
 ## License
 
 [MIT](https://github.com/michaelsanford/bittray/blob/master/LICENSE)
-
-## Repo :octocat:
-
-Available at [github.com/michaelsanford/bittray/](https://github.com/michaelsanford/bittray)
-
-Please do submit bugs and new feature requests.
-
-I'm open to receiving pull requests, but please discuss it in the issue tracker first.
 
 ## Disclaimer
 

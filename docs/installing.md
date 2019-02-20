@@ -16,6 +16,13 @@ order: 1
 1. Unpack
 1. Run `bittray.exe`
 
+#### Binaries are unsigned
+
+The artifacts produced by the current build process are not signed. You will be presented with a UAC security warning
+when you run the application. [I'm working on signing them (#19).](https://github.com/michaelsanford/bittray/issues/19)
+
+Run it if you trust me, I guess 🤷‍♂️
+
 # Configuration
 
 On first launch, `Bittray` will ask for two things:
@@ -32,15 +39,6 @@ On first launch, `Bittray` will ask for two things:
  
      It will be not stored and is only valid until you quit Bittray. See [Security]({{ site.baseurl }}/security) for more details.
 
-## Binaries are unsigned
-
-The artifacts produced by the current build process are not signed. You will be presented with a UCM security warning
-when you run the application.
-
-[I'm working on signing them (#19).](https://github.com/michaelsanford/bittray/issues/19)
-
-Run it if you trust me, I guess 🤷‍♂️
-
 ## Next step
 
-:ok: [Running It and understanding the UI]({{ site.baseurl }}/using).
+[Running It and understanding the UI]({{ site.baseurl }}/using).

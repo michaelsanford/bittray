@@ -45,4 +45,4 @@ Opens the Bitbucket pull request Dashboard you provided.
 
 # Next Step
 
-:ok: A note on [Security]({{ site.baseurl }}/security).
+A note on [Security]({{ site.baseurl }}/security).
