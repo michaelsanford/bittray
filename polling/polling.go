@@ -5,8 +5,8 @@ package polling
  */
 
 import (
+	"github.com/getlantern/systray"
 	"github.com/michaelsanford/bittray/credentials"
-	"github.com/michaelsanford/systray"
 	"github.com/tidwall/gjson"
 	"io/ioutil"
 	"net/http"
