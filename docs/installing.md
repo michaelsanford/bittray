@@ -39,6 +39,14 @@ On first launch, `Bittray` will ask for two things:
  
      It will be not stored and is only valid until you quit Bittray. See [Security]({{ site.baseurl }}/security) for more details.
 
+#### Start on Login
+
+If you'd like `bittray` to start automatically on login:
+
+1. Open a Run dialog with <kbd>Windows Key</kbd> + <kbd>R</kbd>
+1. Run the command `shell:startup` to open your autostart folder
+1. Create a shortcut to `bittray.exe` by clicking the exe, <kbd>CTRL</kbd> + <kbd>SHIFT</kbd> + dragging it into the folder you just opened.
+
 ## Next step
 
 [Running It and understanding the UI]({{ site.baseurl }}/using).
