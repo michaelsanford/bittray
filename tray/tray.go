@@ -3,10 +3,10 @@ package tray
 import (
 	"fmt"
 	"github.com/gen2brain/dlgs"
+	"github.com/getlantern/systray"
 	"github.com/michaelsanford/bittray/credentials"
 	"github.com/michaelsanford/bittray/polling"
 	"github.com/michaelsanford/bittray/tray/assets"
-	"github.com/michaelsanford/systray"
 	"github.com/pkg/browser"
 )
 
