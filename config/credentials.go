@@ -1,4 +1,4 @@
-package credentials
+package config
 
 import (
 	"fmt"
@@ -56,7 +56,7 @@ func StoreConfig(username string, url string) {
 
 func askUser() (user string, ok bool, err error) {
 	for user == "" {
-		user, ok, err = dlgs.Entry("Username", "Please enter your BitBucket username", "")
+		user, ok, err = dlgs.Entry("Username", "Your BitBucket username:", "")
 		if user == "" && ok {
 			dlgs.Error("Username missing", "Ok, so, without your username I can't log you in.\n\nTry again...")
 		} else {
@@ -69,7 +69,7 @@ func askUser() (user string, ok bool, err error) {
 func askURL() (pURL string, ok bool, err error) {
 
 	for pURL == "" {
-		pURL, ok, err = dlgs.Entry("Bitbucket URL", "Enter your Bitbucket URL in exactly the format shown", "http://host.domain.com:7990")
+		pURL, ok, err = dlgs.Entry("Bitbucket URL", "Your Bitbucket URL:", "http://host.domain.com:7990")
 
 		_, parsingErr := url.ParseRequestURI(pURL)
 		if parsingErr != nil && ok {
@@ -86,7 +86,7 @@ func askURL() (pURL string, ok bool, err error) {
 // AskPass interactively asks the user for their Bitbucket password
 func AskPass() (pass string, ok bool, err error) {
 	for pass == "" {
-		pass, ok, err = dlgs.Password("Bitbucket Password", "Enter your Bitbucket password.")
+		pass, ok, err = dlgs.Password("Bitbucket Password", "Your Bitbucket password:")
 		if pass == "" || !ok {
 			return "", ok, err
 		}

@@ -27,4 +27,4 @@ Storing it is arguably actively harmful.
 
 # Conclusion
 
-[So I just don't  store it](https://github.com/michaelsanford/bittray/blob/master/credentials/credentials.go).
+[So I just don't  store it](https://github.com/michaelsanford/bittray/blob/master/config/config.go).

@@ -6,7 +6,7 @@ package polling
 
 import (
 	"github.com/getlantern/systray"
-	"github.com/michaelsanford/bittray/credentials"
+	"github.com/michaelsanford/bittray/config"
 	"github.com/tidwall/gjson"
 	"io/ioutil"
 	"net/http"
@@ -19,10 +19,10 @@ const pollIntervalSec = 10
 func Poll() <-chan int8 {
 	items := make(chan int8)
 
-	user, url := credentials.GetConfig()
+	user, url := config.GetConfig()
 	endpoint := url + "/rest/api/1.0/dashboard/pull-requests?state=OPEN&role=REVIEWER&participantStatus=UNAPPROVED"
 
-	pass, ok, _ := credentials.AskPass()
+	pass, ok, _ := config.AskPass()
 	if !ok {
 		systray.Quit()
 	}

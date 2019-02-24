@@ -1,18 +1,18 @@
 package main
 
 import (
-	"github.com/michaelsanford/bittray/credentials"
+	"github.com/michaelsanford/bittray/config"
 	"github.com/michaelsanford/bittray/tray"
 )
 
 func main() {
 	var ok bool
 
-	user, url := credentials.GetConfig()
+	user, url := config.GetConfig()
 
 	if user == "" || url == "" {
-		credentials.DestroyConfig()
-		ok = credentials.AskConfig()
+		config.DestroyConfig()
+		ok = config.AskConfig()
 		if !ok {
 			return
 		}
