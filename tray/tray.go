@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"github.com/gen2brain/dlgs"
 	"github.com/getlantern/systray"
-	"github.com/michaelsanford/bittray/credentials"
+	"github.com/michaelsanford/bittray/config"
 	"github.com/michaelsanford/bittray/polling"
 	"github.com/michaelsanford/bittray/tray/assets"
 	"github.com/pkg/browser"
@@ -54,7 +54,7 @@ func onReady() {
 	}()
 
 	go func() {
-		_, url := credentials.GetConfig()
+		_, url := config.GetConfig()
 		for {
 			select {
 			case <-mStash.ClickedCh:
@@ -68,7 +68,7 @@ func onReady() {
 					panic(err.Error())
 				}
 				if yes {
-					credentials.DestroyConfig()
+					config.DestroyConfig()
 					dlgs.Info("Reset", "Bittray has been reset and will now quit.")
 					systray.Quit()
 					return

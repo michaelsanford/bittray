@@ -33,3 +33,5 @@ Feel like submitting a PR? Please file an issue first, but I'm definitely happy 
 ## Disclaimer
 
 This project is in no way affiliated with or officially endorsed by Atlassian Inc.
+
+Icons are courtesy [Recep Kütük](https://www.iconfinder.com/iconsets/bitsies).
