@@ -7,12 +7,13 @@ order: 1
 
 # Downloads
 
-|Version|Code Name|Link|Checksum (SHA1)|
+|Version|Milestone|Link|Checksum (SHA1)|
 |---|---|---|---|
-|1.0.0|"Flying Snow"|[Zip](https://github.com/michaelsanford/bittray/releases/download/v1.0.0/bittray-1.0.0.zip)|`7c5f45eb57bc98b81a3581a3e99486c20c92f8fa`|
+|1.0.1|"Flying Snow"|[:floppy_disk: Zip](https://github.com/michaelsanford/bittray/releases/download/v1.0.1/bittray-1.0.1.zip)|`03c103369cc3c2bbd4386048eea9b8e3d936dac5`|
 
 # Installation
 1. Download the latest stable Release above. ([All Releases are available on Github](https://github.com/michaelsanford/bittray/releases).)
+1. Verify the checksum with `certUtil -hashfile .\bittray-x.x.x.zip sha1`
 1. Unpack
 1. Run `bittray.exe`
 
@@ -50,3 +51,9 @@ If you'd like `bittray` to start automatically on login:
 ## Next step
 
 [Running It and understanding the UI]({{ site.baseurl }}/using).
+
+## Older Releases
+
+|Version|Link|Checksum (SHA1)|
+|1.0.0|[Zip](https://github.com/michaelsanford/bittray/releases/download/v1.0.0/bittray-1.0.0.zip)|`7c5f45eb57bc98b81a3581a3e99486c20c92f8fa`|
+
