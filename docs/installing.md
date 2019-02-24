@@ -22,7 +22,7 @@ order: 1
 The artifacts produced by the current build process are not signed. You will be presented with a UAC security warning
 when you run the application. [I'm working on signing them (#19).](https://github.com/michaelsanford/bittray/issues/19)
 
-Run it if you trust me, I guess 🤷‍♂️
+In Windows 10, click "More" and <kbd>Run Anyway</kbd> (it if you trust me, I guess 🤷‍♂️).
 
 # Configuration
 
