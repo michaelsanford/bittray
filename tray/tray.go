@@ -22,7 +22,6 @@ func onReady() {
 	systray.SetTooltip("Locked")
 
 	mQuit := systray.AddMenuItem("Quit", "Quit Bittray")
-	mReset := systray.AddMenuItem("Reset", "Reset Bittray to factory defaults")
 	systray.AddSeparator()
 	mStash := systray.AddMenuItem("Go to BitBucket", "Review your open Pull Requests")
 
@@ -67,17 +66,6 @@ func onReady() {
 				err := browser.OpenURL(url)
 				if err != nil {
 					panic(err)
-				}
-			case <-mReset.ClickedCh:
-				yes, err := dlgs.Question("Reset?", "Reset Bittray to factory defaults?", true)
-				if err != nil {
-					panic(err.Error())
-				}
-				if yes {
-					config.DestroyConfig()
-					dlgs.Info("Reset", "Bittray has been reset and will now quit.")
-					systray.Quit()
-					return
 				}
 			case <-mQuit.ClickedCh:
 				systray.Quit()
