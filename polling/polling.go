@@ -17,7 +17,7 @@ const pollIntervalSec = 10
 
 // Poll retrieves pull request data from Bitbucket at a given interval
 func Poll() <-chan int8 {
-	items := make(chan int8)
+	items := make(chan int8, 1)
 
 	user, url := config.GetConfig()
 	endpoint := url + "/rest/api/1.0/dashboard/pull-requests?state=OPEN&role=REVIEWER&participantStatus=UNAPPROVED"
