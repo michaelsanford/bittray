@@ -26,18 +26,11 @@ When the developer pushes a new changeset, the `Needs Work` flag is automaticall
 
 # Menus
 
-Clicking the tray shows three menu options:
+Clicking the tray shows two menu options:
 
 ### Quit
 
 Quits Bittray.
-
-### Reset
-
-After a Yes/No confirmation, it
-
-1. Removes the settings stored in the WCM and
-1. Quits, (freeing the password stored in memory)
 
 ### Review X Pull Requests / Go to Bitbucket
 
