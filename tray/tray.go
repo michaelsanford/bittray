@@ -32,16 +32,22 @@ func onReady() {
 		for count := range polling.Poll() {
 			if count > 0 {
 				warned = false
+
 				var plural string
 				if count > 1 {
 					plural = "s"
 				}
+				message := fmt.Sprintf("%d Pull Request%s", count, plural)
+
 				systray.SetIcon(icon.Alarm)
-				systray.SetTooltip(fmt.Sprintf("%d PR%s waiting...", count, plural))
+				systray.SetTooltip(message)
+				mStash.SetTitle("Review " + message)
+				mStash.SetTooltip(message + " waiting...")
 			} else if count == 0 {
 				warned = false
 				systray.SetIcon(icon.Checkmark)
 				systray.SetTooltip("Pull Request queue clear!")
+				mStash.SetTitle("Go to Bitbucket")
 			} else if count == -1 {
 				if !warned {
 					warned = true
