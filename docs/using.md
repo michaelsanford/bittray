@@ -39,7 +39,7 @@ After a Yes/No confirmation, it
 1. Removes the settings stored in the WCM and
 1. Quits, (freeing the password stored in memory)
 
-### Go to Bitbucket
+### Review X Pull Requests / Go to Bitbucket
 
 Opens the Bitbucket pull request Dashboard you provided.
 
