@@ -16,12 +16,13 @@ func Run() {
 }
 
 func onReady() {
-
 	systray.SetIcon(icon.Lock)
 	systray.SetTitle("Bittray")
 	systray.SetTooltip("Locked")
 
 	mQuit := systray.AddMenuItem("Quit", "Quit Bittray")
+	mUpdate := systray.AddMenuItem("Update Available...", "Get new version of Bittray")
+	mUpdate.Hide()
 	systray.AddSeparator()
 	mStash := systray.AddMenuItem("Go to BitBucket", "Review your open Pull Requests")
 
@@ -67,12 +68,25 @@ func onReady() {
 				if err != nil {
 					panic(err)
 				}
+			case <-mUpdate.ClickedCh:
+				err := browser.OpenURL(config.DocsURL)
+				if err != nil {
+					panic(err)
+				}
 			case <-mQuit.ClickedCh:
 				systray.Quit()
 				return
 			}
 		}
 	}()
+
+	// Just check once on startup
+	updateAvailable, latestTag := polling.CheckForUpdate()
+	if updateAvailable {
+		updateMsg := fmt.Sprintf("Update to %s available!", latestTag)
+		mUpdate.SetTitle(updateMsg)
+		mUpdate.Show()
+	}
 }
 
 func onExit() {

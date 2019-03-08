@@ -5,6 +5,8 @@ package polling
  */
 
 import (
+	"fmt"
+	"github.com/coreos/go-semver/semver"
 	"github.com/getlantern/systray"
 	"github.com/michaelsanford/bittray/config"
 	"github.com/tidwall/gjson"
@@ -47,4 +49,28 @@ func Poll() <-chan int8 {
 	}(items)
 
 	return items
+}
+
+// CheckForUpdate queries the GitHub repo's latest release tag for an update
+func CheckForUpdate() (available bool, latestTagName string) {
+	vCurrent := semver.New(config.CurrentVersionTag)
+
+	resp, err := http.Get(config.GhAPI)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	defer resp.Body.Close()
+
+	json, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
+	latestTagName = gjson.Get(string(json), "tag_name").Str
+	vLatest := semver.New(latestTagName)
+
+	available = vCurrent.LessThan(*vLatest)
+	return
 }
