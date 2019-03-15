@@ -1,14 +1,16 @@
-version: 1.0.0-{build}
+version: 1.1.0-{build}
 
 clone_folder: c:\gopath\src\github.com\michaelsanford\bittray
 
 environment:
   GOPATH: c:\gopath
+  CWD: c:\gopath\src\github.com\michaelsanford\bittray
 
 install:
   - echo %PATH%
   - echo %GOPATH%
-  - set PATH=%GOPATH%\bin;c:\go\bin;%PATH%
+  - set PATH=%CWD%;%GOPATH%\bin;c:\go\bin;%PATH%
+  - ps: Start-FileDownload 'https://github.com/electron/rcedit/releases/download/v1.1.1/rcedit-x64.exe'
   - go version
   - go env
   - go get
@@ -19,4 +21,21 @@ test_script:
   - go vet ./...
 
 build_script:
-  - go build -ldflags -H=windowsgui bittray.go
+  - ps: .\build.ps1 -version $env:APPVEYOR_BUILD_VERSION
+
+# TODO Eventually #20
+#artifacts:
+#  - path: bittray*.zip
+#    name: zip
+
+#deploy:
+#- provider: GitHub
+#    auth_token:
+#      secure: Z0yefyh3onxGDmYohkkml8XiJWw9mPy20kpWrURqbVz2ZMAbrkIv7//mNE/ambB9
+#    description: "Bittray release"
+#    artifact: zip
+#    draft: true
+#    force_update: true
+#    on:
+#      branch: release               # release from master branch only
+#      APPVEYOR_REPO_TAG: true       # deploy on tag push only
