@@ -9,17 +9,17 @@ order: 1
 
 |Version|Milestone|Link|Checksum (SHA1)|
 |---|---|---|---|
-|1.0.1|"Flying Snow"|[:floppy_disk: Zip](https://github.com/michaelsanford/bittray/releases/download/v1.0.1/bittray-1.0.1.zip)|`03c103369cc3c2bbd4386048eea9b8e3d936dac5`|
+|1.1.0|["Jet Elk"](https://github.com/michaelsanford/bittray/milestone/2?closed=1)|[:floppy_disk: Zip](https://github.com/michaelsanford/bittray/releases/download/1.1.0/bittray-1.1.0.zip)|`cd283afd10f613919bb4dc694bce3c1f9bd23483`|
 
 # Installation
 1. Download the latest stable Release above. ([All Releases are available on Github](https://github.com/michaelsanford/bittray/releases).)
-1. Verify the checksum with `certUtil -hashfile .\bittray-x.x.x.zip sha1`
+1. Verify the checksum with `certUtil -hashfile .\bittray-1.1.0.zip sha1`
 1. Unpack
 1. Run `bittray.exe`
 
 #### Binaries are unsigned
 
-The artifacts produced by the current build process are not signed. You will be presented with a UAC security warning
+The artifacts produced by the current build process are not signed. You will probably be presented with a UAC security warning
 when you run the application. [I'm working on signing them (#19).](https://github.com/michaelsanford/bittray/issues/19)
 
 In Windows 10, click "More" and <kbd>Run Anyway</kbd> (if you trust me, I guess 🤷‍♂️).
@@ -56,4 +56,5 @@ If you'd like `bittray` to start automatically on login:
 
 |Version|Link|Checksum (SHA1)|
 |1.0.0|[Zip](https://github.com/michaelsanford/bittray/releases/download/v1.0.0/bittray-1.0.0.zip)|`7c5f45eb57bc98b81a3581a3e99486c20c92f8fa`|
+|1.0.1|[:floppy_disk: Zip](https://github.com/michaelsanford/bittray/releases/download/v1.0.1/bittray-1.0.1.zip)|`03c103369cc3c2bbd4386048eea9b8e3d936dac5`|
 

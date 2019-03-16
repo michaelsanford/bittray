@@ -10,7 +10,7 @@ That's it.
 
 # Setup
 
-See the links at the top of the page, start at [Installation and Configuration]({{ site.baseurl }}/installing).
+See the links at the top of the page, start at [**Installation and Configuration**]({{ site.baseurl }}/installing).
 
 # Open Source
 

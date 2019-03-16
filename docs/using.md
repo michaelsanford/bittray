@@ -28,6 +28,10 @@ When the developer pushes a new changeset, the `Needs Work` flag is automaticall
 
 Clicking the tray shows two menu options:
 
+### Update Available
+
+When a new release is pushed to Github, a menu item will appear to inform you. Click it to open the download page.
+
 ### Quit
 
 Quits Bittray.
