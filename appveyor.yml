@@ -21,7 +21,8 @@ test_script:
   - go vet ./...
 
 build_script:
-  - ps: .\build.ps1 -version $env:APPVEYOR_BUILD_VERSION
+  - go build
+#  - ps: .\build.ps1 -version $env:APPVEYOR_BUILD_VERSION
 
 # TODO Eventually #20
 #artifacts:
