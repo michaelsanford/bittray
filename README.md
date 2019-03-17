@@ -40,4 +40,10 @@ Read up on [PowerShell Execution Policy](https://docs.microsoft.com/en-ca/powers
 
 # License
 
-MIT
+[MIT](https://github.com/michaelsanford/bittray/blob/master/LICENSE)
+
+# Disclaimer
+
+This project is in no way affiliated with or officially endorsed by Atlassian Inc.
+
+Icons are courtesy [Recep Kütük](https://www.iconfinder.com/iconsets/bitsies).
