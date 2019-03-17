@@ -1,5 +1,9 @@
 # Bittray
 
+![GitHub release](https://img.shields.io/github/release/michaelsanford/bittray.svg)
+![GitHub Release Date](https://img.shields.io/github/release-date/michaelsanford/bittray.svg)
+![GitHub All Releases](https://img.shields.io/github/downloads/michaelsanford/bittray/total.svg)
+
 [![Travis CI](https://travis-ci.org/michaelsanford/bittray.svg?branch=master)](https://travis-ci.org/michaelsanford/bittray)
 [![AppVeyor Status](https://ci.appveyor.com/api/projects/status/github/michaelsanford/bittray)](https://ci.appveyor.com/project/michaelsanford/bittray)
 [![Go Report Card](https://goreportcard.com/badge/github.com/michaelsanford/bittray?branch=master)](https://goreportcard.com/report/github.com/michaelsanford/bittray)
