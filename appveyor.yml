@@ -22,21 +22,3 @@ test_script:
 
 build_script:
   - go build
-#  - ps: .\build.ps1 -version $env:APPVEYOR_BUILD_VERSION
-
-# TODO Eventually #20
-#artifacts:
-#  - path: bittray*.zip
-#    name: zip
-
-#deploy:
-#- provider: GitHub
-#    auth_token:
-#      secure: Z0yefyh3onxGDmYohkkml8XiJWw9mPy20kpWrURqbVz2ZMAbrkIv7//mNE/ambB9
-#    description: "Bittray release"
-#    artifact: zip
-#    draft: true
-#    force_update: true
-#    on:
-#      branch: release               # release from master branch only
-#      APPVEYOR_REPO_TAG: true       # deploy on tag push only
