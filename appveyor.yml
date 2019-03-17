@@ -12,7 +12,6 @@ install:
   - echo %PATH%
   - echo %GOPATH%
   - set PATH=%CWD%;%GOPATH%\bin;c:\go\bin;%PATH%
-  - ps: Start-FileDownload 'https://github.com/electron/rcedit/releases/download/v1.1.1/rcedit-x64.exe'
   - go version
   - go env
   - go get
