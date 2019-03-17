@@ -28,8 +28,7 @@ if ($clean -eq $True)
 
 if ((Get-Command "rcedit-x64.exe" -ErrorAction SilentlyContinue) -eq $null)
 {
-    Write-Host -ForegroundColor red "Unable to find rcedit-x64.exe in your PATH"
-    Write-Host                      "Please specify its location with the flag: -rcedit 'drive:\path\to\rcedit-x64.exe'"
+    Write-Host -ForegroundColor red "Unable to find rcedit-x64.exe in your PATH."
     exit 1
 }
 
