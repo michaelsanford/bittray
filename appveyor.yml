@@ -2,6 +2,8 @@ version: 1.1.0-{build}
 
 clone_folder: c:\gopath\src\github.com\michaelsanford\bittray
 
+stack: go 1.11
+
 environment:
   GOPATH: c:\gopath
   CWD: c:\gopath\src\github.com\michaelsanford\bittray
@@ -15,9 +17,7 @@ install:
   - go env
   - go get
 
-stack: go 1.11
-
-test_script:
+before_build:
   - go vet ./...
 
 build_script:
