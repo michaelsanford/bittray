@@ -22,7 +22,7 @@ See https://michaelsanford.github.io/bittray/ for details.
 
 # Building with Windows Resource Extensions
 
-You'll need Electron's [rcedit](https://github.com/electron/rcedit/releases) before continuing.
+You'll need Electron's [`rcedit-x64`](https://github.com/electron/rcedit/releases) in your PATH before continuing.
 
 By default, Windows 10's PowerShell Execution Policy is set to `Restricted`. To build, you'll need to temporarily set that to `Unrestricted` for the packager to run.
 
@@ -30,12 +30,6 @@ You _do not_ need to run it with Administrative privileges.
 
 ```powershell
 powershell.exe -ExecutionPolicy Unrestricted .\build.ps1 -version 0.0.0
-```
-
-If you don't have `rcedit-x64.exe` in your PATH, you must specify a location to it with the `-rcedit $path` flag.
-
-```powershell
-powershell.exe -ExecutionPolicy Unrestricted .\build.ps1 -version 0.0.0 -rcedit "E:\somepath\rcedit-x64.exe"
 ```
 
 Make sure `config.CurrentVersionTag` (in `constants.go`) matches what you provide in `-version`.
