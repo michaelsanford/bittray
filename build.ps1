@@ -36,6 +36,9 @@ Write-Host "Packing bittray version $version" -ForegroundColor green
 
 Clean-Artifacts
 
+Write-Host "go get..."
+go get
+
 Write-Host "go vet..."
 go vet ./...
 if (!$?)
