@@ -14,6 +14,8 @@ A system tray application for monitoring your BitBucket pull requests, written i
 
 This version supports [Bitbucket REST API v1.0](https://docs.atlassian.com/bitbucket-server/rest/4.10.1/bitbucket-rest.html).
 
+It's tested to work up to Atlassian Bitbucket v5.16.3.
+
 I do plan to update it to API 2, once I have a need. Non-breaking PRs to that end are welcome (but please file an issue).
 
 # Details and Use
