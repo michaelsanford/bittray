@@ -23,3 +23,6 @@ before_build:
 
 build_script:
   - go build
+
+on_success:
+  - ps: Invoke-RestMethod -Method Post -Uri "https://goreportcard.com/checks" -Body @{repo = "github.com/michaelsanford/bittray"}
