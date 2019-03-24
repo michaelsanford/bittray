@@ -14,10 +14,12 @@ install:
   - set PATH=%CWD%;%GOPATH%\bin;c:\go\bin;%PATH%
   - go version
   - go env
+  - go get github.com/golang/lint/golint
   - go get
 
 before_build:
   - go vet ./...
+  - golint ./...
 
 build_script:
   - go build
