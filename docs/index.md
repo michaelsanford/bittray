@@ -3,8 +3,10 @@ layout: home
 title: Bittray
 ---
 
-`Bittray` is a tiny system tray application written in `Go` that polls a Bitbucket Enterprise (Stash) API 1.0-compatible
+`Bittray` is a tiny system tray application written in `Go` that polls a Bitbucket Enterprise /Stash API 1.0-compatible
 server for new pull requests that you need to act on.
+
+It's tested to work up to Atlassian Bitbucket v5.16.3.
 
 That's it.
 
@@ -14,9 +16,9 @@ See the links at the top of the page, start at [**Installation and Configuration
 
 # Open Source
 
-|AppVeyor|Travis CI|Go Report Card|
+|AppVeyor (CI Builder)|Go Report Card|
 |---|---|---|
-|[![AppVeyor Status](https://ci.appveyor.com/api/projects/status/github/michaelsanford/bittray)](https://ci.appveyor.com/project/michaelsanford/bittray)|[![Build Status](https://travis-ci.org/michaelsanford/bittray.svg?branch=master)](https://travis-ci.org/michaelsanford/bittray)|[![Go Report Card](https://goreportcard.com/badge/github.com/michaelsanford/bittray?branch=master)](https://goreportcard.com/report/github.com/michaelsanford/bittray)|
+|[![AppVeyor Status](https://ci.appveyor.com/api/projects/status/github/michaelsanford/bittray)](https://ci.appveyor.com/project/michaelsanford/bittray)|[![Go Report Card](https://goreportcard.com/badge/github.com/michaelsanford/bittray?branch=master)](https://goreportcard.com/report/github.com/michaelsanford/bittray)|
 
 ## Repo :octocat:
 
