@@ -1,0 +1,15 @@
+---
+---
+
+@import "minima";
+
+a {
+  font-weight: bolder;
+  transition: color 250ms linear;
+
+  &:hover,
+  &.page-link:hover {
+    color: firebrick;
+    text-decoration: none;
+  }
+}

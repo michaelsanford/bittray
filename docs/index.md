@@ -3,34 +3,33 @@ layout: home
 title: Bittray
 ---
 
-`Bittray` is a tiny system tray application written in `Go` that polls a Bitbucket Enterprise /Stash API 1.0-compatible
+_Bittray_ is a tiny system tray application written in [Go](https://golang.org/) that polls a Bitbucket Enterprise / Stash API 1.0-compatible
 server for new pull requests that you need to act on.
 
 It's tested to work up to Atlassian Bitbucket v5.16.3.
 
-That's it.
-
 # Setup
 
-See the links at the top of the page, start at [**Installation and Configuration**]({{ site.baseurl }}/installing).
+See [**Installation and Configuration**]({{ site.baseurl }}/installing).
 
 # Open Source
 
-|AppVeyor (CI Builder)|Go Report Card|
-|---|---|---|
-|[![AppVeyor Status](https://ci.appveyor.com/api/projects/status/github/michaelsanford/bittray)](https://ci.appveyor.com/project/michaelsanford/bittray)|[![Go Report Card](https://goreportcard.com/badge/github.com/michaelsanford/bittray?branch=master)](https://goreportcard.com/report/github.com/michaelsanford/bittray)|
+:octocat: [`github.com/michaelsanford/bittray/`](https://github.com/michaelsanford/bittray)
 
-## Repo :octocat:
+![GitHub release](https://img.shields.io/github/release/michaelsanford/bittray.svg)
+![GitHub Release Date](https://img.shields.io/github/release-date/michaelsanford/bittray.svg)
+![GitHub All Releases](https://img.shields.io/github/downloads/michaelsanford/bittray/total.svg)
 
-Available at [`github.com/michaelsanford/bittray/`](https://github.com/michaelsanford/bittray)
+[![AppVeyor Status](https://ci.appveyor.com/api/projects/status/github/michaelsanford/bittray)](https://ci.appveyor.com/project/michaelsanford/bittray)
+[![Go Report Card](https://goreportcard.com/badge/github.com/michaelsanford/bittray?branch=master)](https://goreportcard.com/report/github.com/michaelsanford/bittray)
+
+## Bugs & Feature Requests
 
 Please do [submit bugs and new feature requests](https://github.com/michaelsanford/bittray/issues/new/choose).
 
-Feel like submitting a PR? Please file an issue first, but I'm definitely happy to receive them!
-
 ## License
 
-[MIT](https://github.com/michaelsanford/bittray/blob/master/LICENSE)
+:balance_scale: [MIT](https://github.com/michaelsanford/bittray/blob/master/LICENSE)
 
 ## Disclaimer
 

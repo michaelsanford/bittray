@@ -7,6 +7,12 @@ order: 1
 
 # Downloads
 
+![GitHub release v1.1.0](https://img.shields.io/github/release/michaelsanford/bittray.svg)
+![GitHub Release Date](https://img.shields.io/github/release-date/michaelsanford/bittray.svg)
+![GitHub All Releases](https://img.shields.io/github/downloads/michaelsanford/bittray/total.svg)
+
+[![v1.1.0 Reference Build](https://img.shields.io/static/v1.svg?label=v1.1.0&message=Reference%20Build&color=green?style=flat&logo=appveyor)](https://ci.appveyor.com/project/michaelsanford/bittray/builds/23118422)
+
 |Version|Milestone|Link|Checksum (SHA1)|
 |---|---|---|---|
 |1.1.0|["Jet Elk"](https://github.com/michaelsanford/bittray/milestone/2?closed=1)|[:floppy_disk: Zip](https://github.com/michaelsanford/bittray/releases/download/1.1.0/bittray-1.1.0.zip)|`cd283afd10f613919bb4dc694bce3c1f9bd23483`|
@@ -20,9 +26,9 @@ order: 1
 #### Binaries are unsigned
 
 The artifacts produced by the current build process are not signed. You will probably be presented with a UAC security warning
-when you run the application. [I'm working on signing them (#19).](https://github.com/michaelsanford/bittray/issues/19)
+when you run the application. [It is not feasible to sign them (#19).](https://github.com/michaelsanford/bittray/issues/19)
 
-In Windows 10, click "More" and <kbd>Run Anyway</kbd> (if you trust me, I guess 🤷‍♂️).
+In Windows 10, click "More" and <kbd>Run Anyway</kbd> (if you trust me, I guess :man_shrugging: ).
 
 # Configuration
 
@@ -56,5 +62,5 @@ If you'd like `bittray` to start automatically on login:
 
 |Version|Link|Checksum (SHA1)|
 |1.0.0|[Zip](https://github.com/michaelsanford/bittray/releases/download/v1.0.0/bittray-1.0.0.zip)|`7c5f45eb57bc98b81a3581a3e99486c20c92f8fa`|
-|1.0.1|[:floppy_disk: Zip](https://github.com/michaelsanford/bittray/releases/download/v1.0.1/bittray-1.0.1.zip)|`03c103369cc3c2bbd4386048eea9b8e3d936dac5`|
+|1.0.1|[Zip](https://github.com/michaelsanford/bittray/releases/download/v1.0.1/bittray-1.0.1.zip)|`03c103369cc3c2bbd4386048eea9b8e3d936dac5`|
 
