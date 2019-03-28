@@ -39,9 +39,14 @@ func Poll() <-chan int8 {
 		for ; true; <-ticker.C {
 			resp, _ := client.Do(req)
 
-			if resp != nil && resp.StatusCode == 200 {
-				bodyText, _ := ioutil.ReadAll(resp.Body)
-				items <- int8(gjson.Get(string(bodyText), "size").Uint())
+			if resp != nil {
+				if resp.StatusCode == 200 {
+					bodyText, _ := ioutil.ReadAll(resp.Body)
+					items <- int8(gjson.Get(string(bodyText), "size").Uint())
+				} else if resp.StatusCode == 401 {
+					ticker.Stop()
+					items <- int8(-2)
+				}
 			} else {
 				items <- int8(-1)
 			}

@@ -55,6 +55,11 @@ func onReady() {
 					systray.SetTooltip("Locked")
 					dlgs.Error("Bitbucket Error", "There was a problem contacting the API")
 				}
+			} else if count == -2 {
+				systray.SetIcon(icon.Lock)
+				systray.SetTooltip("Not Authorized")
+				dlgs.Error("Not Authorized", "Wrong password. Quit and try again!")
+				systray.Quit()
 			}
 		}
 	}()
