@@ -7,19 +7,19 @@ order: 1
 
 # Downloads
 
-![GitHub release v1.1.0](https://img.shields.io/github/release/michaelsanford/bittray.svg)
+![GitHub release v1.1.1](https://img.shields.io/github/release/michaelsanford/bittray.svg)
 ![GitHub Release Date](https://img.shields.io/github/release-date/michaelsanford/bittray.svg)
 ![GitHub All Releases](https://img.shields.io/github/downloads/michaelsanford/bittray/total.svg)
 
-[![v1.1.0 Reference Build](https://img.shields.io/static/v1.svg?label=v1.1.0&message=Reference%20Build&color=green?style=flat&logo=appveyor)](https://ci.appveyor.com/project/michaelsanford/bittray/builds/23118422)
+[![v1.1.1 Reference Build](https://img.shields.io/static/v1.svg?label=v1.1.1&message=Reference%20Build&color=green?style=flat&logo=appveyor)](https://ci.appveyor.com/project/michaelsanford/bittray/builds/23440146)
 
 |Version|Milestone|Link|Checksum (SHA1)|
 |---|---|---|---|
-|1.1.0|["Jet Elk"](https://github.com/michaelsanford/bittray/milestone/2?closed=1)|[:floppy_disk: Zip](https://github.com/michaelsanford/bittray/releases/download/1.1.0/bittray-1.1.0.zip)|`cd283afd10f613919bb4dc694bce3c1f9bd23483`|
+|1.1.1|["Glass Harp"](https://github.com/michaelsanford/bittray/milestone/3?closed=1)|[:floppy_disk: Zip](https://github.com/michaelsanford/bittray/releases/download/1.1.1/bittray-1.1.1.zip)|`bc03e593bb631573fb6abd47a323e4d14f939c6c`|
 
 # Installation
 1. Download the latest stable Release above. ([All Releases are available on Github](https://github.com/michaelsanford/bittray/releases).)
-1. Verify the checksum with `certUtil -hashfile .\bittray-1.1.0.zip sha1`
+1. Verify the checksum with `certUtil -hashfile .\bittray-1.1.1.zip sha1`
 1. Unpack
 1. Run `bittray.exe`
 
@@ -61,6 +61,7 @@ If you'd like `bittray` to start automatically on login:
 ## Older Releases
 
 |Version|Link|Checksum (SHA1)|
-|1.0.0|[Zip](https://github.com/michaelsanford/bittray/releases/download/v1.0.0/bittray-1.0.0.zip)|`7c5f45eb57bc98b81a3581a3e99486c20c92f8fa`|
+|1.1.0|[Zip](https://github.com/michaelsanford/bittray/releases/download/1.1.0/bittray-1.1.0.zip)|`cd283afd10f613919bb4dc694bce3c1f9bd23483`|
 |1.0.1|[Zip](https://github.com/michaelsanford/bittray/releases/download/v1.0.1/bittray-1.0.1.zip)|`03c103369cc3c2bbd4386048eea9b8e3d936dac5`|
+|1.0.0|[Zip](https://github.com/michaelsanford/bittray/releases/download/v1.0.0/bittray-1.0.0.zip)|`7c5f45eb57bc98b81a3581a3e99486c20c92f8fa`|
 
