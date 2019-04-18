@@ -15,7 +15,7 @@ import (
 	"time"
 )
 
-const pollIntervalSec = 10
+var pInterval = config.GetPollingInterval()
 
 // Poll retrieves pull request data from Bitbucket at a given interval
 func Poll() <-chan int8 {
@@ -29,7 +29,7 @@ func Poll() <-chan int8 {
 		systray.Quit()
 	}
 
-	ticker := time.NewTicker(pollIntervalSec * time.Second)
+	ticker := time.NewTicker(pInterval)
 
 	client := &http.Client{}
 	req, _ := http.NewRequest("GET", endpoint, nil)

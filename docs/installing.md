@@ -56,6 +56,16 @@ If you'd like `bittray` to start automatically on login:
 
 [Running It and understanding the UI]({{ site.baseurl }}/using).
 
+## Configuring Polling Interval
+
+By default, Bittray polls every 15 seconds.
+
+If this is too frequent, set an environment variable called `BITTRAY:PINT`
+to the number of seconds to poll at.
+
+I'm working on a more elegant way to configure this.
+
+
 ## Older Releases
 
 |Version|Link|Checksum (SHA1)|

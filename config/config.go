@@ -1,11 +1,13 @@
 package config
 
 import (
+	"flag"
 	"fmt"
 	"github.com/danieljoos/wincred"
 	"github.com/gen2brain/dlgs"
 	"net/url"
 	"strings"
+	"time"
 )
 
 const credentialTarget string = "bittray:conf"
@@ -103,4 +105,12 @@ func DestroyConfig() {
 	}
 
 	cred.Delete()
+}
+
+// GetPollingInterval returns polling interval configured by the -poll flag or a default
+func GetPollingInterval() time.Duration {
+	pollPtr := flag.Int("poll", 15, "Polling interval in seconds")
+	flag.Parse()
+
+	return time.Second * time.Duration(*pollPtr)
 }
