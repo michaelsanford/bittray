@@ -21,7 +21,7 @@ a passphrase provided by the user.
 The user would need to enter that decryption passphrase every time `Bittray` launched to decrypt the stored Bitbucket
 credentials.
 
-It saves no effort to store it.
+So you'd have to enter a password every time you launch anyway, saving no effort.
 
 Storing it is arguably actively harmful.
 

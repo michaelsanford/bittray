@@ -7,17 +7,17 @@ order: 1
 
 # Downloads
 
-[![v1.1.1 Reference Build](https://img.shields.io/static/v1.svg?label=v1.1.1&message=Reference%20Build&color=green?style=flat&logo=appveyor)](https://ci.appveyor.com/project/michaelsanford/bittray/builds/23440146)
+[![v1.1.2 Reference Build](https://img.shields.io/static/v1.svg?label=v1.1.2&message=Reference%20Build&color=green?style=flat&logo=appveyor)](https://ci.appveyor.com/project/michaelsanford/bittray/builds/23991990)
 ![GitHub Release Date](https://img.shields.io/github/release-date/michaelsanford/bittray.svg)
 ![GitHub All Releases](https://img.shields.io/github/downloads/michaelsanford/bittray/total.svg)
 
 |Version|Milestone|Link|Checksum (SHA1)|
 |---|---|---|---|
-|1.1.1|["Glass Harp"](https://github.com/michaelsanford/bittray/milestone/3?closed=1)|[:floppy_disk: Zip](https://github.com/michaelsanford/bittray/releases/download/1.1.1/bittray-1.1.1.zip)|`bc03e593bb631573fb6abd47a323e4d14f939c6c`|
+|[1.1.2](https://github.com/michaelsanford/bittray/tree/1.1.2)|[Space Piano](https://github.com/michaelsanford/bittray/milestone/4?closed=1)|[:floppy_disk: Zip](https://github.com/michaelsanford/bittray/releases/download/1.1.2/bittray-1.1.2.zip)|`39c3f2395be85f64074b010aad483e7519cb11c9`|
 
 # Installation
-1. Download the latest stable Release above. ([All Releases are available on Github](https://github.com/michaelsanford/bittray/releases).)
-1. Verify the checksum with `certUtil -hashfile .\bittray-1.1.1.zip sha1`
+1. Download.
+1. Verify the checksum with `certUtil -hashfile .\bittray-1.1.2.zip sha1`
 1. Unpack
 1. Run `bittray.exe`
 
@@ -55,21 +55,3 @@ If you'd like `bittray` to start automatically on login:
 ## Next step
 
 [Running It and understanding the UI]({{ site.baseurl }}/using).
-
-## Configuring Polling Interval
-
-By default, Bittray polls every 15 seconds.
-
-If this is too frequent, set an environment variable called `BITTRAY:PINT`
-to the number of seconds to poll at.
-
-I'm working on a more elegant way to configure this.
-
-
-## Older Releases
-
-|Version|Link|Checksum (SHA1)|
-|1.1.0|[Zip](https://github.com/michaelsanford/bittray/releases/download/1.1.0/bittray-1.1.0.zip)|`cd283afd10f613919bb4dc694bce3c1f9bd23483`|
-|1.0.1|[Zip](https://github.com/michaelsanford/bittray/releases/download/v1.0.1/bittray-1.0.1.zip)|`03c103369cc3c2bbd4386048eea9b8e3d936dac5`|
-|1.0.0|[Zip](https://github.com/michaelsanford/bittray/releases/download/v1.0.0/bittray-1.0.0.zip)|`7c5f45eb57bc98b81a3581a3e99486c20c92f8fa`|
-
