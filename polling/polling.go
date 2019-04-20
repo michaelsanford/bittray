@@ -11,6 +11,7 @@ import (
 	"github.com/michaelsanford/bittray/config"
 	"github.com/tidwall/gjson"
 	"io/ioutil"
+	"math/rand"
 	"net/http"
 	"time"
 )
@@ -36,6 +37,7 @@ func Poll() <-chan int8 {
 	req.SetBasicAuth(user, pass)
 
 	go func(items chan int8) {
+		cBackOffDelay := int(10)
 		for ; true; <-ticker.C {
 			resp, _ := client.Do(req)
 
@@ -43,9 +45,13 @@ func Poll() <-chan int8 {
 				if resp.StatusCode == 200 {
 					bodyText, _ := ioutil.ReadAll(resp.Body)
 					items <- int8(gjson.Get(string(bodyText), "size").Uint())
-				} else if resp.StatusCode == 401 {
+					cBackOffDelay = 10
+				} else if resp.StatusCode == 401 || resp.StatusCode == 403 {
 					ticker.Stop()
 					items <- int8(-2)
+				} else if resp.StatusCode == 429 {
+					items <- int8(-3)
+					cBackOffDelay = backOff(cBackOffDelay)
 				}
 			} else {
 				items <- int8(-1)
@@ -78,4 +84,9 @@ func CheckForUpdate() (available bool, latestTagName string) {
 
 	available = vCurrent.LessThan(*vLatest)
 	return
+}
+
+func backOff(backOffDelay int) int {
+	time.Sleep(time.Second * time.Duration(backOffDelay))
+	return rand.Intn(backOffDelay) + backOffDelay
 }

@@ -29,37 +29,40 @@ func onReady() {
 	go func() {
 		warned := false
 
-		for count := range polling.Poll() {
-			if count > 0 {
+		for bbResponse := range polling.Poll() {
+			if bbResponse > 0 {
 				warned = false
 
 				var plural string
-				if count > 1 {
+				if bbResponse > 1 {
 					plural = "s"
 				}
-				message := fmt.Sprintf("%d Pull Request%s", count, plural)
+				message := fmt.Sprintf("%d Pull Request%s", bbResponse, plural)
 
 				systray.SetIcon(icon.Alarm)
 				systray.SetTooltip(message)
 				mStash.SetTitle("Review " + message)
 				mStash.SetTooltip(message + " waiting...")
-			} else if count == 0 {
+			} else if bbResponse == 0 {
 				warned = false
 				systray.SetIcon(icon.Checkmark)
 				systray.SetTooltip("Pull Request queue clear!")
 				mStash.SetTitle("Go to Bitbucket")
-			} else if count == -1 {
+			} else if bbResponse == -1 {
 				if !warned {
 					warned = true
 					systray.SetIcon(icon.Lock)
 					systray.SetTooltip("Locked")
 					dlgs.Error("Bitbucket Error", "There was a problem contacting the API")
 				}
-			} else if count == -2 {
+			} else if bbResponse == -2 {
 				systray.SetIcon(icon.Lock)
 				systray.SetTooltip("Not Authorized")
 				dlgs.Error("Not Authorized", "Wrong password. Quit and try again!")
 				systray.Quit()
+			} else if bbResponse == -3 {
+				systray.SetIcon(icon.Rate)
+				systray.SetTooltip("Rate Limited!")
 			}
 		}
 	}()
