@@ -25,7 +25,16 @@ When the developer pushes a new changeset, the `Needs Work` flag is automaticall
 |![Queue clear](/assets/checkmark.png)|All of your Pull Requests have been actioned|_PR Queue clear!_|
 |![Rate limited](/assets/rate.png)|You exceeded the API rate limit; automatic request backoff is in effect.|_Rate Limited!_|
 
-Are you often Rate limited? Increase the polling interval in seconds with the commandline flag `-poll=xx`. The default is 15 seconds.
+## Rate Limiting
+
+Automatic exponential request backoff with randomized jitter was [introduced](https://github.com/michaelsanford/bittray/issues/29) in v1.1.2 _Space Piano_.
+
+If the poller thread receives a `429 Too Many Requests`, the icon will change and the poller will backoff with increasing sleep intervals
+until a successful request resets it. There is no maximum to the timeout.
+
+If you are often rate limited, increase the polling interval by launching `bittray.exe` with with the commandline flag `-poll=n` where `n` is are integer seconds.
+
+The default is 15 seconds.
 
 # Menus
 
