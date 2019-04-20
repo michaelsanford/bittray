@@ -32,7 +32,7 @@ Automatic exponential request backoff with randomized jitter was [introduced](ht
 If the poller thread receives a `429 Too Many Requests`, the icon will change and the poller will backoff with increasing sleep intervals
 until a successful request resets it. There is no maximum to the timeout.
 
-If you are often rate limited, increase the polling interval by launching `bittray.exe` with with the commandline flag `-poll=n` where `n` is are integer seconds.
+If you are often rate limited, increase the polling interval by launching `bittray.exe` with with the commandline flag `-poll=n` where `n` are integer seconds: `bittray.exe -poll=30`.
 
 The default is 15 seconds.
 
