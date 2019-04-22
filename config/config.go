@@ -107,7 +107,7 @@ func DestroyConfig() {
 	cred.Delete()
 }
 
-// GetPollingInterval returns polling interval configured by the -poll flag or a default
+// GetPollingInterval returns polling interval configured by the `-poll=n` flag or a default
 func GetPollingInterval() time.Duration {
 	pollPtr := flag.Int("poll", 15, "Polling interval in seconds")
 	flag.Parse()

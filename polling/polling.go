@@ -63,7 +63,7 @@ func Poll() <-chan int8 {
 }
 
 // CheckForUpdate queries the GitHub repo's latest release tag for an update
-func CheckForUpdate() (available bool, latestTagName string) {
+func CheckForUpdate() (available bool, latestTagName string, err error) {
 	vCurrent := semver.New(config.CurrentVersionTag)
 
 	resp, err := http.Get(config.GhAPI)

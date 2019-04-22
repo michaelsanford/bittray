@@ -89,7 +89,7 @@ func onReady() {
 	}()
 
 	// Just check once on startup
-	updateAvailable, latestTag := polling.CheckForUpdate()
+	updateAvailable, latestTag, _ := polling.CheckForUpdate()
 	if updateAvailable {
 		updateMsg := fmt.Sprintf("Update to %s available!", latestTag)
 		mUpdate.SetTitle(updateMsg)
