@@ -104,7 +104,10 @@ func DestroyConfig() {
 		return
 	}
 
-	cred.Delete()
+	err = cred.Delete()
+	if err != nil {
+		fmt.Print(err)
+	}
 }
 
 // GetPollingInterval returns polling interval configured by the `-poll=n` flag or a default
