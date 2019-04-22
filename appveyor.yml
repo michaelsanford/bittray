@@ -21,6 +21,7 @@ before_test:
 
 test_script:
   - go test -v ./...
+  - go test -bench ./...
 
 build_script:
   - go build
