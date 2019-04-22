@@ -16,8 +16,11 @@ install:
   - go env
   - go get
 
-before_build:
+before_test:
   - go vet ./...
+
+test_script:
+  - go test -v ./...
 
 build_script:
   - go build
