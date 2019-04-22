@@ -18,7 +18,7 @@ See [**Installation and Configuration**]({{ site.baseurl }}/installing).
 |Issue Tracker|[File a New Bug or Feature Request](https://github.com/michaelsanford/bittray/issues)<br/>![GitHub issues by-label](https://img.shields.io/github/issues/michaelsanford/bittray/enhancement.svg) ![GitHub issues by-label](https://img.shields.io/github/issues/michaelsanford/bittray/security.svg)|
 |Latest Release|![GitHub release](https://img.shields.io/github/release/michaelsanford/bittray.svg) ![GitHub Release Date](https://img.shields.io/github/release-date/michaelsanford/bittray.svg) ![GitHub All Releases](https://img.shields.io/github/downloads/michaelsanford/bittray/total.svg)|
 |AppVeyor|[![AppVeyor Status](https://ci.appveyor.com/api/projects/status/github/michaelsanford/bittray)](https://ci.appveyor.com/project/michaelsanford/bittray)|
-|Coverage|[![Go Report Card](https://goreportcard.com/badge/github.com/michaelsanford/bittray?branch=master)](https://goreportcard.com/report/github.com/michaelsanford/bittray)|
+|Coverage|[![Go Report Card](https://goreportcard.com/badge/github.com/michaelsanford/bittray?branch=master)](https://goreportcard.com/report/github.com/michaelsanford/bittray) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/dfc9cc8a29ae4e8eb7429b6ec3c43b01)](https://www.codacy.com/app/michaelsanford/bittray?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=michaelsanford/bittray&amp;utm_campaign=Badge_Grade)|
 |API Support|API v1.0; Atlassian Bitbucket v5.16.3|
 
 ## License
