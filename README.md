@@ -22,7 +22,7 @@ I do plan to update it to API 2, once I have a need. Non-breaking PRs to that en
 
 ## Details and Use
 
-See https://michaelsanford.github.io/bittray/ for details.
+See <https://michaelsanford.github.io/bittray/> for details.
 
 ## Building with Windows Resource Extensions
 
