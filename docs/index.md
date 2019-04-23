@@ -25,7 +25,12 @@ See [**Installation and Configuration**]({{ site.baseurl }}/installing).
 
 :balance_scale: [MIT](https://github.com/michaelsanford/bittray/blob/master/LICENSE)
 
-## Disclaimer
+
+# Testimonials
+
+> Bittray has made our code review process much more efficient - I no longer have to sift through dozens of notification e-mails from Stash to know when I have a Pull Request to review. The icon change is visible enough to be noticed without being annoying and it's a quick click to the list of Pull Requests. I've loved using it so far! _-Laura Ventulieri_
+
+# Disclaimer
 
 This project is not affiliated with or endorsed by Atlassian Inc.
 
