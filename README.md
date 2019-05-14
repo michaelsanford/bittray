@@ -7,6 +7,7 @@
 [![AppVeyor Status](https://ci.appveyor.com/api/projects/status/github/michaelsanford/bittray)](https://ci.appveyor.com/project/michaelsanford/bittray)
 [![Go Report Card](https://goreportcard.com/badge/github.com/michaelsanford/bittray?branch=master)](https://goreportcard.com/report/github.com/michaelsanford/bittray)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/dfc9cc8a29ae4e8eb7429b6ec3c43b01)](https://www.codacy.com/app/michaelsanford/bittray?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=michaelsanford/bittray&amp;utm_campaign=Badge_Grade)
+[![DepShield Badge](https://depshield.sonatype.org/badges/michaelsanford/bittray/depshield.svg)](https://depshield.github.io)
 
 A system tray application for monitoring your BitBucket pull requests, written in Go.
 
