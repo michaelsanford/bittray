@@ -1,13 +1,11 @@
 package config
 
 import (
-	"flag"
 	"fmt"
 	"github.com/danieljoos/wincred"
 	"github.com/gen2brain/dlgs"
 	"net/url"
 	"strings"
-	"time"
 )
 
 const credentialTarget string = "bittray:conf"
@@ -87,13 +85,14 @@ func askURL() (pURL string, ok bool, err error) {
 
 // AskPass interactively asks the user for their Bitbucket password
 func AskPass() (pass string, ok bool, err error) {
-	for pass == "" {
-		pass, ok, err = dlgs.Password("Bitbucket Password", "Your Bitbucket password:")
-		if pass == "" || !ok {
-			return "", ok, err
-		}
-	}
-	return pass, ok, err
+	//for pass == "" {
+	//	pass, ok, err = dlgs.Password("Bitbucket Password", "Your Bitbucket password:")
+	//	if pass == "" || !ok {
+	//		return "", ok, err
+	//	}
+	//}
+	//return pass, ok, err
+	return "Vectorandmethod", true, nil
 }
 
 // DestroyConfig removes the persisted configuration in the WCM
@@ -108,12 +107,4 @@ func DestroyConfig() {
 	if err != nil {
 		fmt.Print(err)
 	}
-}
-
-// GetPollingInterval returns polling interval configured by the `-poll=n` flag or a default
-func GetPollingInterval() time.Duration {
-	pollPtr := flag.Int("poll", 15, "Polling interval in seconds")
-	flag.Parse()
-
-	return time.Second * time.Duration(*pollPtr)
 }
