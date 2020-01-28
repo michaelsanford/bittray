@@ -13,11 +13,13 @@ order: 1
 
 |Version|Milestone|Link|Checksum (SHA1)|
 |---|---|---|---|
-|[1.1.2](https://github.com/michaelsanford/bittray/tree/1.1.2)|[Space Piano](https://github.com/michaelsanford/bittray/milestone/4?closed=1)|[:floppy_disk: Zip](https://github.com/michaelsanford/bittray/releases/download/1.1.2/bittray-1.1.2.zip)|`39c3f2395be85f64074b010aad483e7519cb11c9`|
+|[1.1.3](https://github.com/michaelsanford/bittray/tree/1.1.3)|[Space Piano](https://github.com/michaelsanford/bittray/milestone/4?closed=1)|[:floppy_disk: Zip](https://github.com/michaelsanford/bittray/releases/download/1.1.3/bittray-1.1.3.zip)|`0d3fc2b98fb99b585dc6d0a05edc0add5bbff1ce`|
+
+1.1.3 was simply compiled with Go 1.13.6 (up from Go 1.12 in release 1.1.2).
 
 # Installation
 1. Download.
-1. Verify the checksum with `certUtil -hashfile .\bittray-1.1.2.zip sha1`
+1. Verify the checksum with `certUtil -hashfile .\bittray-1.1.3.zip sha1`
 1. Unpack
 1. Run `bittray.exe`
 
