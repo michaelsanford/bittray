@@ -7,17 +7,22 @@ order: 1
 
 # Downloads
 
-[![v1.1.2 Reference Build](https://img.shields.io/static/v1.svg?label=v1.1.2&message=Reference%20Build&color=green?style=flat&logo=appveyor)](https://ci.appveyor.com/project/michaelsanford/bittray/builds/23991990)
+[![v1.1.3 Reference Build](https://img.shields.io/static/v1.svg?label=v1.1.3&message=Reference%20Build&color=green?style=flat&logo=appveyor)](https://ci.appveyor.com/project/michaelsanford/bittray/builds/23991990)
 ![GitHub Release Date](https://img.shields.io/github/release-date/michaelsanford/bittray.svg)
 ![GitHub All Releases](https://img.shields.io/github/downloads/michaelsanford/bittray/total.svg)
 
 |Version|Milestone|Link|Checksum (SHA1)|
 |---|---|---|---|
-|[1.1.2](https://github.com/michaelsanford/bittray/tree/1.1.2)|[Space Piano](https://github.com/michaelsanford/bittray/milestone/4?closed=1)|[:floppy_disk: Zip](https://github.com/michaelsanford/bittray/releases/download/1.1.2/bittray-1.1.2.zip)|`39c3f2395be85f64074b010aad483e7519cb11c9`|
+|[1.1.3](https://github.com/michaelsanford/bittray/tree/1.1.3)|[Bone Mill](https://github.com/michaelsanford/bittray/milestone/4?closed=1)|[:floppy_disk: Zip](https://github.com/michaelsanford/bittray/releases/download/1.1.3/bittray-1.1.3.zip)|`c9dd0660abff03fd5d5df7f96c3f5685ea23af51`|
+
+# Changelog
+
+- 1.1.3 was simply compiled with Go 1.13.6 (up from Go 1.12 in release 1.1.2).
+- `-poll` flag was removed.
 
 # Installation
 1. Download.
-1. Verify the checksum with `certUtil -hashfile .\bittray-1.1.2.zip sha1`
+1. Verify the checksum with `certUtil -hashfile .\bittray-1.1.3.zip sha1`
 1. Unpack
 1. Run `bittray.exe`
 

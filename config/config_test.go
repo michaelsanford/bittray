@@ -1,23 +1,17 @@
 package config
 
 import (
-	"flag"
 	"testing"
 	"time"
 )
 
 func TestGetPollingInterval(t *testing.T) {
 	got := GetPollingInterval()
-	const want = time.Duration(15 * time.Second)
+	const want = 20 * time.Second
 
 	if got != want {
 		t.Errorf("got '%s' want '%s'", got, want)
 	}
-}
-
-func TestGetPollingInterval2(t *testing.T) {
-	// TODO Figure out the configured case with the `-poll=n` flag
-	flag.Parse()
 }
 
 // TODO

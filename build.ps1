@@ -11,11 +11,11 @@ param(
 
 function Clear-Artifacts
 {
-    Write-Output "Cleaning old build products."
+    Write-Host "Cleaning old build products."
     Remove-Item * -Include bittray.exe, bittray-*.zip
     if (!$?)
     {
-        Write-Output -BackgroundColor red -ForegroundColor white "Failed to remove existing artifacts; see above."
+        Write-Host -BackgroundColor red -ForegroundColor white "Failed to remove existing artifacts; see above."
         exit 1
     }
 }
@@ -28,37 +28,37 @@ if ($clean -eq $True)
 
 if ($null -eq (Get-Command "rcedit-x64.exe" -ErrorAction SilentlyContinue))
 {
-    Write-Output -ForegroundColor red "Unable to find rcedit-x64.exe in your PATH."
+    Write-Host -ForegroundColor red "Unable to find rcedit-x64.exe in your PATH."
     exit 1
 }
 
-Write-Output "Packing bittray version $version" -ForegroundColor green
+Write-Host "Packing bittray version $version" -ForegroundColor green
 
 Clear-Artifacts
 
-Write-Output "go get..."
+Write-Host "go get..."
 go get
 
-Write-Output "go vet..."
+Write-Host "go vet..."
 go vet ./...
 if (!$?)
 {
-    Write-Output -BackgroundColor red -ForegroundColor white "'go vet' failed; see above."
+    Write-Host -BackgroundColor red -ForegroundColor white "'go vet' failed; see above."
     exit 1
 }
 
-Write-Output "go build..."
+Write-Host "go build..."
 go build -ldflags -H=windowsgui bittray.go
 if (!$?)
 {
-    Write-Output -BackgroundColor red -ForegroundColor white "'go build' failed; see above."
+    Write-Host -BackgroundColor red -ForegroundColor white "'go build' failed; see above."
     exit 1
 }
 
-Write-Output "Validating artifact..."
-if ( [System.IO.File]::Exists("bittray.exe"))
+Write-Host "Validating artifact..."
+if (Test-Path "bittray.exe" -PathType Leaf)
 {
-    Write-Output "Applying rsrc metadata..."
+    Write-Host "Applying rsrc metadata..."
     trap
     {
         "Error adding resource metadata: $_"
@@ -70,26 +70,26 @@ if ( [System.IO.File]::Exists("bittray.exe"))
 }
 else
 {
-    Write-Output -BackgroundColor red -ForegroundColor white "'go build' claims to have succeeded, but there is no artifact?"
+    Write-Host -BackgroundColor red -ForegroundColor white "'go build' claims to have succeeded, but there is no artifact?"
     exit 1
 }
 
 $package = "bittray-$version.zip"
-Write-Output "Compressing archive ($package)..."
+Write-Host "Compressing archive ($package)..."
 Compress-Archive -Path .\bittray.exe -CompressionLevel Optimal -DestinationPath $package
 if (!$?)
 {
-    Write-Output -BackgroundColor red -ForegroundColor white "Failed to create zip package."
+    Write-Host -BackgroundColor red -ForegroundColor white "Failed to create zip package."
     exit 1
 }
 
 certUtil -hashfile "$package" sha1
 if (!$?)
 {
-    Write-Output -BackgroundColor red -ForegroundColor white "Failed to generate SHA1 integrity checksum."
+    Write-Host -BackgroundColor red -ForegroundColor white "Failed to generate SHA1 integrity checksum."
     exit 1
 }
 else
 {
-    Write-Output -BackgroundColor green -ForegroundColor white "Done!"
+    Write-Host -BackgroundColor green -ForegroundColor white "Done!"
 }

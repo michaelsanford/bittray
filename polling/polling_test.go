@@ -4,7 +4,7 @@ import "testing"
 
 func TestCheckForUpdate(t *testing.T) {
 	const wantAvailable = false
-	const wantLastTag = "1.1.2"
+	const wantLastTag = "1.1.3"
 
 	gotAvailable, gotLastTag, err := CheckForUpdate()
 	if err != nil {

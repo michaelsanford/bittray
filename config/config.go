@@ -1,7 +1,6 @@
 package config
 
 import (
-	"flag"
 	"fmt"
 	"github.com/danieljoos/wincred"
 	"github.com/gen2brain/dlgs"
@@ -112,8 +111,8 @@ func DestroyConfig() {
 
 // GetPollingInterval returns polling interval configured by the `-poll=n` flag or a default
 func GetPollingInterval() time.Duration {
-	pollPtr := flag.Int("poll", 15, "Polling interval in seconds")
-	flag.Parse()
+	//pollPtr := flag.Int("poll", 15, "Polling interval in seconds")
+	//flag.Parse()
 
-	return time.Second * time.Duration(*pollPtr)
+	return time.Second * time.Duration(20)
 }
