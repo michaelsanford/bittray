@@ -7,7 +7,7 @@ order: 1
 
 # Downloads
 
-[![v1.1.3 Reference Build](https://img.shields.io/static/v1.svg?label=v1.1.3&message=Reference%20Build&color=green?style=flat&logo=appveyor)](https://ci.appveyor.com/project/michaelsanford/bittray/builds/23991990)
+[![v1.1.3 Reference Build](https://img.shields.io/static/v1.svg?label=v1.1.3&message=Reference%20Build&color=green?style=flat&logo=appveyor)](https://ci.appveyor.com/project/michaelsanford/bittray/builds/30421681)
 ![GitHub Release Date](https://img.shields.io/github/release-date/michaelsanford/bittray.svg)
 ![GitHub All Releases](https://img.shields.io/github/downloads/michaelsanford/bittray/total.svg)
 
