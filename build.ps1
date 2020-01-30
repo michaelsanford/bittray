@@ -47,8 +47,11 @@ if (!$?)
     exit 1
 }
 
+Write-Host "Applying rsrc metadata..."
+rsrc -manifest .\bittray.exe.manifest -ico .\bitbucket.ico -arch amd64
+
 Write-Host "go build..."
-go build -ldflags -H=windowsgui bittray.go
+go build -ldflags="-H=windowsgui"
 if (!$?)
 {
     Write-Host -BackgroundColor red -ForegroundColor white "'go build' failed; see above."
@@ -56,19 +59,7 @@ if (!$?)
 }
 
 Write-Host "Validating artifact..."
-if (Test-Path "bittray.exe" -PathType Leaf)
-{
-    Write-Host "Applying rsrc metadata..."
-    trap
-    {
-        "Error adding resource metadata: $_"
-    }
-
-    rcedit-x64.exe --set-icon .\bitbucket.ico "bittray.exe"
-    rcedit-x64.exe "bittray.exe" --set-version-string "ProductName" "Bittray"
-    rcedit-x64.exe "bittray.exe" --set-version-string "ProductVersion" "$version"
-}
-else
+if (!(Test-Path "bittray.exe" -PathType Leaf))
 {
     Write-Host -BackgroundColor red -ForegroundColor white "'go build' claims to have succeeded, but there is no artifact?"
     exit 1
