@@ -28,7 +28,9 @@ See [**Installation and Configuration**]({{ site.baseurl }}/installing).
 
 # Testimonials
 
-> Bittray has made our code review process much more efficient - I no longer have to sift through dozens of notification e-mails from Stash to know when I have a Pull Request to review. The icon change is visible enough to be noticed without being annoying and it's a quick click to the list of Pull Requests. I've loved using it so far! _-Laura Ventulieri_
+> Bittray has made our code review process much more efficient - I no longer have to sift through dozens of notification e-mails from Stash to know when I have a Pull Request to review. The icon change is visible enough to be noticed without being annoying and it's a quick click to the list of Pull Requests. I've loved using it so far! _-Laura V._
+
+> Bittray is useful to keep track of PRs to review so ti's quite useful and super easy to install and use _-Eric K._
 
 # Disclaimer
 
