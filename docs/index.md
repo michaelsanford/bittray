@@ -6,7 +6,7 @@ title: Bittray
 _Bittray_ is a tiny system tray application written in [Go](https://golang.org/) that polls a Bitbucket Enterprise / Stash API 1.0-compatible
 server for new pull requests that you need to act on.
 
-It's tested to work up to Atlassian Bitbucket v5.16.3.
+It's tested to work up to Atlassian Bitbucket v5.16.3 up to v6.10.2.
 
 # Setup
 
@@ -19,7 +19,7 @@ See [**Installation and Configuration**]({{ site.baseurl }}/installing).
 |Latest Release|![GitHub release](https://img.shields.io/github/release/michaelsanford/bittray.svg) ![GitHub Release Date](https://img.shields.io/github/release-date/michaelsanford/bittray.svg) ![GitHub All Releases](https://img.shields.io/github/downloads/michaelsanford/bittray/total.svg)|
 |AppVeyor|[![AppVeyor Status](https://ci.appveyor.com/api/projects/status/github/michaelsanford/bittray)](https://ci.appveyor.com/project/michaelsanford/bittray)|
 |Coverage|[![Go Report Card](https://goreportcard.com/badge/github.com/michaelsanford/bittray?branch=master)](https://goreportcard.com/report/github.com/michaelsanford/bittray) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/dfc9cc8a29ae4e8eb7429b6ec3c43b01)](https://www.codacy.com/app/michaelsanford/bittray?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=michaelsanford/bittray&amp;utm_campaign=Badge_Grade)|
-|API Support|API v1.0; Atlassian Bitbucket v5.16.3|
+|API Support|API v1.0; Atlassian Bitbucket v5.16.3 - v6.10.2|
 
 ## License
 
