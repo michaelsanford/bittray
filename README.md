@@ -1,14 +1,17 @@
-## Bittray
+# Bittray
 
 ![GitHub release](https://img.shields.io/github/release/michaelsanford/bittray.svg)
 ![GitHub Release Date](https://img.shields.io/github/release-date/michaelsanford/bittray.svg)
 ![GitHub All Releases](https://img.shields.io/github/downloads/michaelsanford/bittray/total.svg)
-
-[![AppVeyor Status](https://ci.appveyor.com/api/projects/status/github/michaelsanford/bittray)](https://ci.appveyor.com/project/michaelsanford/bittray)
 [![Go Report Card](https://goreportcard.com/badge/github.com/michaelsanford/bittray?branch=master)](https://goreportcard.com/report/github.com/michaelsanford/bittray)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/dfc9cc8a29ae4e8eb7429b6ec3c43b01)](https://www.codacy.com/app/michaelsanford/bittray?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=michaelsanford/bittray&amp;utm_campaign=Badge_Grade)
 
 A system tray application for monitoring your BitBucket pull requests, written in Go.
+
+## Archived 📦
+
+This project is now _archived and unmaintained._
+
+It is replaced by [bittray 2 - a rewrite in .NET](https://github.com/michaelsanford/bittray-2) (still in development).
 
 ![Gopher Logo](https://github.com/michaelsanford/bittray/blob/master/docs/assets/gopher.png)
 
